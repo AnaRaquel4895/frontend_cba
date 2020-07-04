@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     if (output == true) {
       this.routes.navigate(['/starter']);
     } else {  
-      this.msg = 'Invalid Username or Password';
+      this.msg = 'Los credenciales ingresados no coinciden con ninguna cuenta';
     }
   }
 

@@ -30,8 +30,8 @@ export class FullComponent implements OnDestroy {
     blue: boolean;
     dark: boolean;
     minisidebar: boolean;
-    boxed: boolean;
-    danger: boolean;
+    boxed: boolean = true;
+    danger: boolean = true;
     showHide: boolean;
     url: string;
     sidebarOpened;

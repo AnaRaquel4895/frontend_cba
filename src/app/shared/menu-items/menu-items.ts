@@ -33,10 +33,36 @@ export interface Menu {
 const MENUITEMS = [
     {
         state: 'starter',
-        name: 'Starter Page',
+        name: 'Inicio',
         type: 'link',
         icon: 'content_copy'
     },
+    {
+        state: 'material',
+        name: 'Aplicaciones',
+        type: 'sub',
+        icon: 'bubble_chart',
+        badge: [],
+        children: [
+            { state: 'starter', name: 'Aplicaciones', type: 'link' },
+            { state: 'starter', name: 'Noticias', type: 'link' },
+            { state: 'starter', name: 'Mensajes', type: 'link' },
+            { state: 'starter', name: 'Calendario', type: 'link' },
+            { state: 'starter', name: 'Calificaciones', type: 'link' },
+            { state: 'starter', name: 'Reportes', type: 'link' },
+        ]
+    },
+    {
+        state: 'material',
+        name: 'Cursos',
+        type: 'sub',
+        icon: 'bubble_chart',
+        badge: [],
+        children: [
+            { state: 'starter', name: 'Reglamento', type: 'link' },
+        ]
+    },
+    /**
     {
         state: 'material',
         name: 'Material Ui',
@@ -65,6 +91,7 @@ const MENUITEMS = [
             { state: 'slide-toggle', name: 'Slide Toggle', type: 'link' }
         ]
     }
+    */
 ];
 
 @Injectable()
