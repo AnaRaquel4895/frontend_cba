@@ -8,7 +8,7 @@ export const AppRoutes: Routes = [
     {
         path: '',
         component: FullComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
         children: [
             {
                 path: '',
@@ -22,6 +22,10 @@ export const AppRoutes: Routes = [
             {
                 path: 'starter',
                 loadChildren: () => import('./starter/starter.module').then(m => m.StarterModule)
+            },
+            {
+                path: 'usuarios',
+                loadChildren: () => import('./modulos/usuario/usuario.module').then(m => m.UsuarioModule)
             },
             {
                 path: 'icons',

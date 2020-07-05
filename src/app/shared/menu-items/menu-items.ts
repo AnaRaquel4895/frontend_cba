@@ -62,6 +62,16 @@ const MENUITEMS = [
             { state: 'starter', name: 'Reglamento', type: 'link' },
         ]
     },
+    {
+        state: 'usuarios',
+        name: 'Usuarios',
+        type: 'sub',
+        icon: 'bubble_chart',
+        badge: [],
+        children: [
+            { state: 'crear-form', name: 'Registrar Usuarios', type: 'link' },
+        ]
+    },
     /**
     {
         state: 'material',
