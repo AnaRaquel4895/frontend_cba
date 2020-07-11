@@ -28,6 +28,10 @@ export const AppRoutes: Routes = [
                 loadChildren: () => import('./modulos/usuario/usuario.module').then(m => m.UsuarioModule)
             },
             {
+                path: 'cursos',
+                loadChildren: () => import('./modulos/curso/curso.module').then(m => m.CursoModule)
+            },
+            {
                 path: 'icons',
                 loadChildren: () => import('./icons/mat-icon.module').then(m => m.IconsModule)
             }
