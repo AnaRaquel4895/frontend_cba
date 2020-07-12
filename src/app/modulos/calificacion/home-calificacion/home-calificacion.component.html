@@ -1,1 +1,52 @@
-<p>home-calificacion works!</p>
+<div fxLayout="row wrap">
+  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>Seleccione un grupo para poder ver o editar las calificaciones</mat-card-title>
+        <div class="responsive-table">
+          <mat-table #table [dataSource]="dataSource">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <mat-header-cell *matHeaderCellDef> N°. Grupo </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">N°. Grupo:</span>
+                {{element.position}}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef> Curso </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Curso:</span>
+                {{element.name}}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight">
+              <mat-header-cell *matHeaderCellDef> Horario </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Horario:</span>
+                {{element.weight}}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol">
+              <mat-header-cell *matHeaderCellDef> Profesor </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Profesor:</span>
+                {{element.symbol}}
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)"></mat-row>
+          </mat-table>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

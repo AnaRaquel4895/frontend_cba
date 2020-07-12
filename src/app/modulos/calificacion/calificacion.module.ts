@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CalificacionRoutingModule } from './calificacion-routing.module';
 import { HomeCalificacionComponent } from './home-calificacion/home-calificacion.component';
+import { MaterialModule } from '../../material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import { HomeCalificacionComponent } from './home-calificacion/home-calificacion
         }
       }
     ]),
+    MaterialModule,
+    FlexLayoutModule,
   ]
 })
 export class CalificacionModule { }
