@@ -1,9 +1,4 @@
 /* Column Widths */
-.mat-column-number,
-.mat-column-state {
-  max-width: 64px;
-}
-
 .mat-column-position {
 	max-width: 80px;
 	justify-content: center;

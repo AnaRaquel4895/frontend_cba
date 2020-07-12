@@ -1,1 +1,117 @@
-<p>calificacion-lista works!</p>
+<div fxLayout="row wrap">
+  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>Calificaciones del curso AIT-B1 horario: 19:00-22:00</mat-card-title>
+        <div class="responsive-table">
+          <mat-table #table [dataSource]="dataSource">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="nombreCompleto">
+              <mat-header-cell *matHeaderCellDef> Alumno </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Alumno:</span>
+                {{element.nombreCompleto}}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="periodo">
+              <mat-header-cell *matHeaderCellDef> Periodo </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Periodo:</span>
+                {{element.periodo}}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="fecha">
+              <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Fecha:</span>
+                {{element.fecha}}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="firstQuiz">
+              <mat-header-cell *matHeaderCellDef> Quiz 1 </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Quiz 1:</span>
+                {{element.firstQuiz}}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="secondQuiz">
+              <mat-header-cell *matHeaderCellDef> Quiz 2 </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Quiz 2:</span>
+                {{element.secondQuiz}}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="midterm">
+              <mat-header-cell *matHeaderCellDef> Midterm </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Midterm:</span>
+                {{element.midterm}}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="thirdQuiz">
+              <mat-header-cell *matHeaderCellDef> Quiz 3 </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Quiz 3:</span>
+                {{element.thirdQuiz}}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="finalExam">
+              <mat-header-cell *matHeaderCellDef> Final Exam </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Final Exam:</span>
+                {{element.finalExam}}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="nota">
+              <mat-header-cell *matHeaderCellDef> Nota </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Nota:</span>
+                {{element.nota}}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="comentarios">
+              <mat-header-cell *matHeaderCellDef> Comentarios </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Comentarios:</span>
+                {{element.comentarios}}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="opciones">
+              <mat-header-cell *matHeaderCellDef> Opciones </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Opciones:</span>
+                <button mat-icon-button color="primary">
+                  <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+                </button>
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
