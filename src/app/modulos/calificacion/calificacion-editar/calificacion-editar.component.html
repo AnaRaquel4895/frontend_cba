@@ -1,7 +1,81 @@
-<h1 mat-dialog-title>Editar la calificación</h1>
-<div mat-dialog-content>
-  
+<div mat-dialog-content fxLayout="row wrap">
+  <div fxFlex.gt-sm="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>Editar la calificación</mat-card-title>
+        <!-- ============================================================== -->
+        <!-- column -->
+        <!-- ============================================================== -->
+        <form class="basic-form">
+          <div fxLayout="row wrap" fxFlexAlign="center" class="row">
+            <!-- column Nombre del Alumno -->
+            <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+              <mat-form-field>
+                <input matInput placeholder="Nombre del Alumno" readonly="true" value="Juan Roberto Peralez Sanchez">
+              </mat-form-field>
+            </div>
+            <!-- column Periodo -->
+            <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+              <mat-form-field>
+                <input matInput placeholder="Periodo" readonly="true" value="Feb-20">
+              </mat-form-field>
+            </div>
+            <!-- column Fecha -->
+            <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+              <mat-form-field>
+                <input matInput placeholder="Fecha" readonly="true" value="28/02/2020">
+              </mat-form-field>
+            </div>
+            <!-- column Quiz 1 -->
+            <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+              <mat-form-field>
+                <input matInput placeholder="Quiz 1" value="20">
+              </mat-form-field>
+            </div>
+            <!-- column Quiz 2 -->
+            <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+              <mat-form-field>
+                <input matInput placeholder="Quiz 2" value="20">
+              </mat-form-field>
+            </div>
+            <!-- column Midterm -->
+            <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+              <mat-form-field>
+                <input matInput placeholder="Midterm" value="20">
+              </mat-form-field>
+            </div>
+            <!-- column Quiz 3 -->
+            <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+              <mat-form-field>
+                <input matInput placeholder="Quiz 3" value="20">
+              </mat-form-field>
+            </div>
+            <!-- column Final Exam -->
+            <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+              <mat-form-field>
+                <input matInput placeholder="Final Exam" value="20">
+              </mat-form-field>
+            </div>
+            <!-- column Nota -->
+            <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+              <mat-form-field>
+                <input matInput placeholder="Nota" value="20">
+              </mat-form-field>
+            </div>
+            <!-- column Comentarios -->
+            <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+              <mat-form-field>
+                <textarea matInput placeholder="Comentarios" rows="4" value="Well done"></textarea>
+              </mat-form-field>
+            </div>
+
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
+
 <div mat-dialog-actions>
   <button mat-button tabindex="2">Aceptar</button>
   <button mat-button (click)="onNoClick()" tabindex="-1">Cancelar</button>
