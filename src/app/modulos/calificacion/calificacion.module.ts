@@ -6,10 +6,11 @@ import { HomeCalificacionComponent } from './home-calificacion/home-calificacion
 import { MaterialModule } from '../../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CalificacionListaComponent } from './calificacion-lista/calificacion-lista.component';
+import { CalificacionEditarComponent } from './calificacion-editar/calificacion-editar.component';
 
 
 @NgModule({
-  declarations: [HomeCalificacionComponent, CalificacionListaComponent],
+  declarations: [HomeCalificacionComponent, CalificacionListaComponent, CalificacionEditarComponent],
   imports: [
     CommonModule,
     // CalificacionRoutingModule,
@@ -39,6 +40,9 @@ import { CalificacionListaComponent } from './calificacion-lista/calificacion-li
     ]),
     MaterialModule,
     FlexLayoutModule,
+  ],
+  entryComponents:[
+    CalificacionEditarComponent
   ]
 })
 export class CalificacionModule { }

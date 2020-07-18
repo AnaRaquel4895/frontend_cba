@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { MatDialog } from '@angular/material/dialog';
+import { CalificacionEditarComponent } from '../calificacion-editar/calificacion-editar.component';
 
 @Component({
   selector: 'app-calificacion-lista',
@@ -11,10 +13,10 @@ export class CalificacionListaComponent implements OnInit {
 
 
   displayedColumns = ['nombreCompleto', 'periodo', 'fecha', 'firstQuiz',
-    'secondQuiz', 'midterm', 'thirdQuiz', 'finalExam', 'nota', 'comentarios','opciones'];
+    'secondQuiz', 'midterm', 'thirdQuiz', 'finalExam', 'nota', 'comentarios', 'opciones'];
   dataSource = new MatTableDataSource<Inscrito>(ELEMENT_DATA);
 
-  constructor(breakpointObserver: BreakpointObserver) {
+  constructor(public breakpointObserver: BreakpointObserver, public dialog: MatDialog) {
     breakpointObserver.observe(['(max-width: 600px)']).subscribe(result => {
       this.displayedColumns = result.matches ?
         ['nombreCompleto', 'periodo', 'fecha', 'firstQuiz',
@@ -27,6 +29,22 @@ export class CalificacionListaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  editarCalificacion(): void {
+    this.openDialog();
+  }
+
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(CalificacionEditarComponent, {
+      width: '500px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
+  }
 }
 
 const ELEMENT_DATA: Inscrito[] = [
