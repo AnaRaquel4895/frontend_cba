@@ -7,10 +7,11 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GrupoListaComponent } from './grupo-lista/grupo-lista.component';
 
 
 @NgModule({
-  declarations: [GrupoCrearComponent],
+  declarations: [GrupoCrearComponent, GrupoListaComponent],
   imports: [
     CommonModule,
 
@@ -24,6 +25,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
           urls: [
             { title: 'Dashboard', url: '/dashboard' },
             { title: 'Crear Grupo' }
+          ]
+        }
+      },
+      {
+        path: 'lista',
+        component: GrupoListaComponent,
+        data: {
+          title: 'Lista de grupos',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Lista de grupos' }
           ]
         }
       }
