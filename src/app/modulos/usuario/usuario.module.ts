@@ -8,10 +8,11 @@ import { StarterComponent } from '../../starter/starter.component';
 import { MaterialModule } from '../../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UsuarioListaComponent } from './usuario-lista/usuario-lista.component';
 
 
 @NgModule({
-  declarations: [UsuarioCrearFormComponent],
+  declarations: [UsuarioCrearFormComponent, UsuarioListaComponent],
   imports: [
     CommonModule,
     // UsuarioRoutingModule,
