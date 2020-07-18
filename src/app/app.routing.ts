@@ -36,6 +36,10 @@ export const AppRoutes: Routes = [
                 loadChildren: () => import('./modulos/calificacion/calificacion.module').then(m => m.CalificacionModule)
             },
             {
+                path: 'grupos',
+                loadChildren: () => import('./modulos/grupo/grupo.module').then(m => m.GrupoModule)
+            },
+            {
                 path: 'icons',
                 loadChildren: () => import('./icons/mat-icon.module').then(m => m.IconsModule)
             }
