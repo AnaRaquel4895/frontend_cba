@@ -2,43 +2,34 @@
   <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
     <mat-card>
       <mat-card-content>
-        <mat-card-title>Lista de grupos</mat-card-title>
+        <mat-card-title>Lista de Alumnos inscritos al grupo:</mat-card-title>
         <div class="responsive-table">
           <mat-table #table [dataSource]="dataSource">
 
             <!-- Position Column -->
-            <ng-container matColumnDef="position">
-              <mat-header-cell *matHeaderCellDef> N°. Grupo </mat-header-cell>
+            <ng-container matColumnDef="nombres">
+              <mat-header-cell *matHeaderCellDef> Nombres </mat-header-cell>
               <mat-cell *matCellDef="let element">
-                <span class="header-label">N°. Grupo:</span>
-                {{element.position}}
+                <span class="header-label">Nombres:</span>
+                {{element.nombres}}
               </mat-cell>
             </ng-container>
 
             <!-- Name Column -->
-            <ng-container matColumnDef="name">
-              <mat-header-cell *matHeaderCellDef> Curso </mat-header-cell>
+            <ng-container matColumnDef="apellidoPaterno">
+              <mat-header-cell *matHeaderCellDef> Apellido Paterno </mat-header-cell>
               <mat-cell *matCellDef="let element">
-                <span class="header-label">Curso:</span>
-                {{element.name}}
+                <span class="header-label">Apellido Paterno:</span>
+                {{element.apellidoPaterno}}
               </mat-cell>
             </ng-container>
 
             <!-- Weight Column -->
-            <ng-container matColumnDef="weight">
-              <mat-header-cell *matHeaderCellDef> Horario </mat-header-cell>
+            <ng-container matColumnDef="apellidoMaterno">
+              <mat-header-cell *matHeaderCellDef> Apellido Materno </mat-header-cell>
               <mat-cell *matCellDef="let element">
-                <span class="header-label">Horario:</span>
-                {{element.weight}}
-              </mat-cell>
-            </ng-container>
-
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="symbol">
-              <mat-header-cell *matHeaderCellDef> Profesor </mat-header-cell>
-              <mat-cell *matCellDef="let element">
-                <span class="header-label">Profesor:</span>
-                {{element.symbol}}
+                <span class="header-label">Apellido Materno:</span>
+                {{element.apellidoMaterno}}
               </mat-cell>
             </ng-container>
 
