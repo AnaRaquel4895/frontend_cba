@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-calificacion',
@@ -12,7 +13,7 @@ export class HomeCalificacionComponent implements OnInit {
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
 
-  constructor(breakpointObserver: BreakpointObserver) {
+  constructor(breakpointObserver: BreakpointObserver, private router:Router) {
     breakpointObserver.observe(['(max-width: 600px)']).subscribe(result => {
       this.displayedColumns = result.matches ?
         ['position', 'name', 'weight', 'symbol'] :
@@ -25,6 +26,7 @@ export class HomeCalificacionComponent implements OnInit {
 
   selectRow(row): void {
     console.log(row);
+    this.router.navigate(['/calificaciones/lista']);
   }
 }
 

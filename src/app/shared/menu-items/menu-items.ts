@@ -83,6 +83,16 @@ const MENUITEMS = [
             { state: 'lista', name: 'Lista Grupos', type: 'link' },
         ]
     },
+    {
+        state: 'calificaciones',
+        name: 'Calificaciones',
+        type: 'sub',
+        icon: 'bubble_chart',
+        badge: [],
+        children: [
+            { state: 'inicio', name: 'Calificaciones', type: 'link' },
+        ]
+    },
     /**
     {
         state: 'material',
