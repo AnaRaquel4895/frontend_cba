@@ -1,0 +1,15 @@
+/* Column Widths */
+.mat-column-position {
+  max-width: 80px;
+  justify-content: center;
+}
+
+
+.mat-column-name,
+.mat-column-weight {
+  max-width: 150px;
+}
+
+.mat-row:hover {
+  background-color: #F8F9F9;
+}
