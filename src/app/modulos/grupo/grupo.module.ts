@@ -8,10 +8,11 @@ import { MaterialModule } from '../../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GrupoListaComponent } from './grupo-lista/grupo-lista.component';
+import { GrupoListaInscritosComponent } from './grupo-lista-inscritos/grupo-lista-inscritos.component';
 
 
 @NgModule({
-  declarations: [GrupoCrearComponent, GrupoListaComponent],
+  declarations: [GrupoCrearComponent, GrupoListaComponent, GrupoListaInscritosComponent],
   imports: [
     CommonModule,
 
@@ -38,7 +39,18 @@ import { GrupoListaComponent } from './grupo-lista/grupo-lista.component';
             { title: 'Lista de grupos' }
           ]
         }
-      }
+      },
+      {
+        path: 'lista-inscritos',
+        component: GrupoListaInscritosComponent,
+        data: {
+          title: 'Lista de inscritos',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Lista de inscritos' }
+          ]
+        }
+      },
     ]),
     MaterialModule,
     FlexLayoutModule,
