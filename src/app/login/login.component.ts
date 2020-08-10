@@ -8,6 +8,7 @@ import {
   Validators,
   FormControl
 } from '@angular/forms';
+import { AuthService } from '../modulos/auth/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,16 +18,29 @@ import {
 })
 export class LoginComponent implements OnInit {
   msg = '';
-  constructor(private service: MyserviceService, private routes: Router) { }
+  constructor(
+    private service: MyserviceService,
+    private routes: Router,
+    private authService: AuthService
+  ) { }
 
   check(uname: string, p: string) {
-    const output = this.service.checkusernameandpassword(uname, p);
-    if (output == true) {
-      this.routes.navigate(['/starter']);
-    } else {  
-      this.msg = 'Los credenciales ingresados no coinciden con ninguna cuenta';
-    }
+    this.authService.login({
+      email: uname,
+      password: p
+    })
+      .subscribe(
+        (val) => {
+          console.log('Data: ', val);
+          this.routes.navigate(['/starter']);
+        },
+        (err) => {
+          console.log('Error: ', err);
+          this.msg = 'Los credenciales ingresados no coinciden con ninguna cuenta';
+
+        }
+      );
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }
