@@ -26,7 +26,7 @@ export const AppRoutes: Routes = [
             {
                 path: 'usuarios',
                 loadChildren: () => import('./modulos/usuario/usuario.module').then(m => m.UsuarioModule)
-            },            
+            },
             {
                 path: 'calificaciones',
                 loadChildren: () => import('./modulos/calificacion/calificacion.module').then(m => m.CalificacionModule)

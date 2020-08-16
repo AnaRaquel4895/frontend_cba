@@ -31,7 +31,7 @@ import { GestionCrearFormComponent } from './gestion-crear-form/gestion-crear-fo
           title: 'Crear Gestion',
           urls: [
             { title: 'Dashboard', url: '/dashboard' },
-            { title: 'Crear Cruso' }
+            { title: 'Crear Gestion' }
           ]
         }
       }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ProgramaRoutingModule } from './programa-routing.module';
+import { RouterModule } from '@angular/router';
 import { ProgramaCrearFormComponent } from './programa-crear-form/programa-crear-form.component';
 import { ProgramaListaComponent } from './programa-lista/programa-lista.component';
 
@@ -10,7 +11,31 @@ import { ProgramaListaComponent } from './programa-lista/programa-lista.componen
   declarations: [ProgramaCrearFormComponent, ProgramaListaComponent],
   imports: [
     CommonModule,
-    ProgramaRoutingModule
+    // ProgramaRoutingModule
+    RouterModule.forChild([
+      {
+        path: 'lista',
+        component: ProgramaListaComponent,
+        data: {
+          title: 'Lista de Programas',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Lista de Programas' }
+          ]
+        }
+      },
+      {
+        path: 'crear-form',
+        component: ProgramaCrearFormComponent,
+        data: {
+          title: 'Crear Programa',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Crear Programa' }
+          ]
+        }
+      }
+    ]),
   ]
 })
 export class ProgramaModule { }

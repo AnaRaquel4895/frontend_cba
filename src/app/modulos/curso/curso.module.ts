@@ -27,6 +27,28 @@ import { CursoListaComponent } from './curso-lista/curso-lista.component';
             { title: 'Asignar Curso' }
           ]
         }
+      },
+      {
+        path: 'lista',
+        component: CursoListaComponent,
+        data: {
+          title: 'Lista de Cursos',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Lista de Cursos' }
+          ]
+        }
+      },
+      {
+        path: 'crear-form',
+        component: CursoCrearFormComponent,
+        data: {
+          title: 'Crear Curso',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Crear Curso' }
+          ]
+        }
       }
     ]),
     MaterialModule,

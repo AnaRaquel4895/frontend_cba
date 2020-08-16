@@ -108,8 +108,8 @@ const MENUITEMS = [
         icon: 'bubble_chart',
         badge: [],
         children: [
-            { state: 'inicio', name: 'Lista de Programas', type: 'link' },
-            { state: 'inicio', name: 'Nuevo Programa', type: 'link' }
+            { state: 'lista', name: 'Lista de Programas', type: 'link' },
+            { state: 'crear-form', name: 'Nuevo Programa', type: 'link' }
         ]
     },
     {
@@ -119,8 +119,8 @@ const MENUITEMS = [
         icon: 'bubble_chart',
         badge: [],
         children: [
-            { state: 'inicio', name: 'Lista de Cursos', type: 'link' },
-            { state: 'inicio', name: 'Nuevo Curso', type: 'link' }
+            { state: 'lista', name: 'Lista de Cursos', type: 'link' },
+            { state: 'crear-form', name: 'Nuevo Curso', type: 'link' }
         ]
     },
     {
@@ -130,8 +130,8 @@ const MENUITEMS = [
         icon: 'bubble_chart',
         badge: [],
         children: [
-            { state: 'inicio', name: 'Lista de Niveles', type: 'link' },
-            { state: 'inicio', name: 'Nuevo Nivel', type: 'link' }
+            { state: 'lista', name: 'Lista de Niveles', type: 'link' },
+            { state: 'crear-form', name: 'Nuevo Nivel', type: 'link' }
         ]
     },
     {
@@ -141,8 +141,8 @@ const MENUITEMS = [
         icon: 'bubble_chart',
         badge: [],
         children: [
-            { state: 'inicio', name: 'Lista de Horarios', type: 'link' },
-            { state: 'inicio', name: 'Nuevo Horario', type: 'link' }
+            { state: 'lista', name: 'Lista de Horarios', type: 'link' },
+            { state: 'crear-form', name: 'Nuevo Horario', type: 'link' }
         ]
     },
     {
