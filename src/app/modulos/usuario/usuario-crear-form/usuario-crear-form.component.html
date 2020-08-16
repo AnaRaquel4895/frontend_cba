@@ -9,64 +9,62 @@
         <!-- ============================================================== -->
         <!-- column -->
         <!-- ============================================================== -->
-        <form class="basic-form">
+        <form [formGroup]="usuarioForm" class="basic-form">
           <div fxLayout="row wrap">
             <!-- column -->
             <div fxFlex.gt-md="100" fxFlex="100">
               <mat-form-field>
-                <input matInput placeholder="NOMBRE">
+                <input matInput formControlName="nombres" placeholder="NOMBRES">
               </mat-form-field>
             </div>
             <!-- column -->
             <div fxFlex.gt-md="100" fxFlex="100">
               <mat-form-field>
-                <input matInput placeholder="APELLIDO PATERNO">
+                <input matInput formControlName="apellidopaterno" placeholder="APELLIDO PATERNO">
               </mat-form-field>
             </div>
             <!-- column -->
             <div fxFlex.gt-md="100" fxFlex="100">
               <mat-form-field>
-                <input matInput placeholder="APELLIDO MATERNO">
+                <input matInput formControlName="apellidomaterno" placeholder="APELLIDO MATERNO">
               </mat-form-field>
             </div>
             <!-- column -->
             <div fxFlex.gt-md="100" fxFlex="100">
               <mat-form-field>
-                <input matInput placeholder="CARNET DE IDENTIDAD">
+                <input matInput formControlName="carnetidentidad" placeholder="CARNET DE IDENTIDAD">
+              </mat-form-field>
+            </div>
+            <!-- column -->
+            <div fxFlex.gt-md="100" fxFlex="100">
+              <mat-form-field>
+                <input matInput formControlName="celular" placeholder="CELULAR">
               </mat-form-field>
             </div>
             <!-- column -->
             <div fxFlex.gt-sm="100" fxFlex="100">
               <mat-form-field>
                 <mat-select placeholder="TIPO DE USUARIO">
-                  <mat-option value="option">Option</mat-option>
-                  <mat-option value="option">Option2</mat-option>
-                  <mat-option value="option">Option3</mat-option>
+                  <mat-option *ngFor="let role of rolesLista" [value]="role.id">{{role.name}}</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
-             <!-- column -->
-             <div fxFlex.gt-md="100" fxFlex="100">
+            <!-- column -->
+            <div fxFlex.gt-md="100" fxFlex="100">
               <mat-form-field>
-                <input matInput placeholder="CORREO ELECTRONICO">
+                <input matInput formControlName="email" placeholder="CORREO ELECTRONICO">
               </mat-form-field>
             </div>
             <!-- column -->
             <div fxFlex.gt-md="100" fxFlex="100">
               <mat-form-field>
-                <input matInput placeholder="CONTRASEÑA">
+                <input matInput formControlName="password" placeholder="CONTRASEÑA" type='password'>
               </mat-form-field>
             </div>
-            <!-- column -->
-            <div fxFlex.gt-md="100" fxFlex="100">
-              <mat-form-field>
-                <input matInput placeholder="CELULAR">
-              </mat-form-field>
-            </div>
-            <!-------------------------------------------------------------------->          
+            <!-------------------------------------------------------------------->
             <!-- column -->
             <div fxFlex.gt-sm="100" fxFlex="100">
-              <button mat-raised-button color="primary">ACEPTAR</button>
+              <button mat-raised-button type="button" (click)="saveUsuario()" color="primary" >ACEPTAR</button>
             </div>
           </div>
         </form>
