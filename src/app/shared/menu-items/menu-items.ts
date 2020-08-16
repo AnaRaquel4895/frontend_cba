@@ -37,6 +37,7 @@ const MENUITEMS = [
         type: 'link',
         icon: 'content_copy'
     },
+    /*
     {
         state: 'material',
         name: 'Aplicaciones',
@@ -62,6 +63,7 @@ const MENUITEMS = [
             { state: 'starter', name: 'Reglamento', type: 'link' },
         ]
     },
+    */
     {
         state: 'usuarios',
         name: 'Usuarios',
@@ -91,6 +93,67 @@ const MENUITEMS = [
         badge: [],
         children: [
             { state: 'inicio', name: 'Calificaciones', type: 'link' },
+        ]
+    },
+    {
+        state: '',
+        name: 'Catalogos',
+        type: 'saperator',
+        icon: 'av_timer'
+    },
+    {
+        state: 'programas',
+        name: 'Programas',
+        type: 'sub',
+        icon: 'bubble_chart',
+        badge: [],
+        children: [
+            { state: 'inicio', name: 'Lista de Programas', type: 'link' },
+            { state: 'inicio', name: 'Nuevo Programa', type: 'link' }
+        ]
+    },
+    {
+        state: 'cursos',
+        name: 'Cursos',
+        type: 'sub',
+        icon: 'bubble_chart',
+        badge: [],
+        children: [
+            { state: 'inicio', name: 'Lista de Cursos', type: 'link' },
+            { state: 'inicio', name: 'Nuevo Curso', type: 'link' }
+        ]
+    },
+    {
+        state: 'niveles',
+        name: 'Niveles',
+        type: 'sub',
+        icon: 'bubble_chart',
+        badge: [],
+        children: [
+            { state: 'inicio', name: 'Lista de Niveles', type: 'link' },
+            { state: 'inicio', name: 'Nuevo Nivel', type: 'link' }
+        ]
+    },
+    {
+        state: 'horarios',
+        name: 'Horarios',
+        type: 'sub',
+        icon: 'bubble_chart',
+        badge: [],
+        children: [
+            { state: 'inicio', name: 'Lista de Horarios', type: 'link' },
+            { state: 'inicio', name: 'Nuevo Horario', type: 'link' }
+        ]
+    },
+    {
+        state: 'gestiones',
+        name: 'Gestiones',
+        type: 'sub',
+        icon: 'bubble_chart',
+        badge: [],
+        children: [
+            { state: 'inicio', name: 'Lista de Gestiones', type: 'link' },
+            { state: 'inicio', name: 'Nueva Gestion', type: 'link' }
         ]
     },
     /**
