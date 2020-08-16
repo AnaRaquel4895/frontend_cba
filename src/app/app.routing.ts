@@ -40,6 +40,10 @@ export const AppRoutes: Routes = [
                 loadChildren: () => import('./modulos/grupo/grupo.module').then(m => m.GrupoModule)
             },
             {
+                path: 'gestiones',
+                loadChildren: () => import('./modulos/gestion/gestion.module').then(m => m.GestionModule)
+            },
+            {
                 path: 'icons',
                 loadChildren: () => import('./icons/mat-icon.module').then(m => m.IconsModule)
             }

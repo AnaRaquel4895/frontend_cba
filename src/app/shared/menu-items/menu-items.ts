@@ -152,8 +152,8 @@ const MENUITEMS = [
         icon: 'bubble_chart',
         badge: [],
         children: [
-            { state: 'inicio', name: 'Lista de Gestiones', type: 'link' },
-            { state: 'inicio', name: 'Nueva Gestion', type: 'link' }
+            { state: 'lista', name: 'Lista de Gestiones', type: 'link' },
+            { state: 'crear-form', name: 'Nueva Gestion', type: 'link' }
         ]
     },
     /**
