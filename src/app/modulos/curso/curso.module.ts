@@ -7,10 +7,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from '../../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CursoCrearFormComponent } from './curso-crear-form/curso-crear-form.component';
+import { CursoListaComponent } from './curso-lista/curso-lista.component';
 
 
 @NgModule({
-  declarations: [AsignarCursoComponent],
+  declarations: [AsignarCursoComponent, CursoCrearFormComponent, CursoListaComponent],
   imports: [
     CommonModule,
     // CursoRoutingModule,

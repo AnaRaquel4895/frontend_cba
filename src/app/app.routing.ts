@@ -26,11 +26,7 @@ export const AppRoutes: Routes = [
             {
                 path: 'usuarios',
                 loadChildren: () => import('./modulos/usuario/usuario.module').then(m => m.UsuarioModule)
-            },
-            {
-                path: 'cursos',
-                loadChildren: () => import('./modulos/curso/curso.module').then(m => m.CursoModule)
-            },
+            },            
             {
                 path: 'calificaciones',
                 loadChildren: () => import('./modulos/calificacion/calificacion.module').then(m => m.CalificacionModule)
@@ -40,8 +36,24 @@ export const AppRoutes: Routes = [
                 loadChildren: () => import('./modulos/grupo/grupo.module').then(m => m.GrupoModule)
             },
             {
+                path: 'cursos',
+                loadChildren: () => import('./modulos/curso/curso.module').then(m => m.CursoModule)
+            },
+            {
                 path: 'gestiones',
                 loadChildren: () => import('./modulos/gestion/gestion.module').then(m => m.GestionModule)
+            },
+            {
+                path: 'horarios',
+                loadChildren: () => import('./modulos/horario/horario.module').then(m => m.HorarioModule)
+            },
+            {
+                path: 'niveles',
+                loadChildren: () => import('./modulos/nivel/nivel.module').then(m => m.NivelModule)
+            },
+            {
+                path: 'programas',
+                loadChildren: () => import('./modulos/programa/programa.module').then(m => m.ProgramaModule)
             },
             {
                 path: 'icons',
