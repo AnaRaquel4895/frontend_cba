@@ -5,12 +5,18 @@ import { ProgramaRoutingModule } from './programa-routing.module';
 import { RouterModule } from '@angular/router';
 import { ProgramaCrearFormComponent } from './programa-crear-form/programa-crear-form.component';
 import { ProgramaListaComponent } from './programa-lista/programa-lista.component';
+import { MaterialModule } from '../../material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [ProgramaCrearFormComponent, ProgramaListaComponent],
   imports: [
     CommonModule,
+    MaterialModule,
+    FlexLayoutModule,
+    ReactiveFormsModule,
     // ProgramaRoutingModule
     RouterModule.forChild([
       {
