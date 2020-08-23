@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { ProgramaService } from '../services/programa.service';
+import { Programa } from '../models/programa';
 
 @Component({
   selector: 'app-programa-lista',
@@ -12,7 +13,7 @@ export class ProgramaListaComponent implements OnInit {
 
 
   displayedColumns = ['nombreCompleto', 'opciones'];
-  dataSource = new MatTableDataSource<any>([]);
+  dataSource = new MatTableDataSource<Programa>([]);
 
   constructor(
     public breakpointObserver: BreakpointObserver,
@@ -26,7 +27,16 @@ export class ProgramaListaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
+    this.listarProgramas();
+  }
+
+  private listarProgramas(): void {
+    this.programaService.listar()
+      .subscribe(
+        (response) => {
+          this.dataSource = new MatTableDataSource<any>(response.data);
+        }
+      );
   }
 
   editar(id: number): void {
