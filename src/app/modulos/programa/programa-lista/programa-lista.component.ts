@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { element } from 'protractor';
 import { ProgramaService } from '../services/programa.service';
 
 @Component({
