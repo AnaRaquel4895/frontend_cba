@@ -26,11 +26,11 @@ export class ProgramaService {
 
   }
 
-  editar(id: number | string, data: object): void {
-
+  editar(id: number, data: object): Observable<Response<Programa>> {
+    return this.http.put<Response<Programa>>(`${apiUrl}/${id}`, data);
   }
 
-  recuperar(id: number | string): void {
-
+  recuperar(id: number): Observable<Response<Programa>> {
+    return this.http.get<Response<Programa>>(`${apiUrl}/${id}`);
   }
 }

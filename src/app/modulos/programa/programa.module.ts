@@ -40,6 +40,17 @@ import { ReactiveFormsModule } from '@angular/forms';
             { title: 'Crear Programa' }
           ]
         }
+      },
+      {
+        path: 'editar-form/:id',
+        component: ProgramaCrearFormComponent,
+        data: {
+          title: 'Editar Programa',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Editar Programa' }
+          ]
+        }
       }
     ]),
   ]

@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { ProgramaService } from '../services/programa.service';
 import { Programa } from '../models/programa';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-programa-lista',
@@ -17,7 +18,8 @@ export class ProgramaListaComponent implements OnInit {
 
   constructor(
     public breakpointObserver: BreakpointObserver,
-    private programaService: ProgramaService
+    private programaService: ProgramaService,
+    private router: Router
   ) {
     breakpointObserver.observe(['(max-width: 600px)']).subscribe(result => {
       this.displayedColumns = result.matches ?
@@ -40,7 +42,7 @@ export class ProgramaListaComponent implements OnInit {
   }
 
   editar(id: number): void {
-
+    this.router.navigate([`/programas/editar-form/${id}`]);
   }
 
   eliminar(id: number): void {

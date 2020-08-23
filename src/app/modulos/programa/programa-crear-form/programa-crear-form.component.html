@@ -2,7 +2,7 @@
   <div fxFlex.gt-sm="100" fxFlex="100">
     <mat-card>
       <mat-card-content>
-        <mat-card-title>Crear Programa</mat-card-title>
+        <mat-card-title>{{ editMode ? tituloEditar : tituloCrear }}</mat-card-title>
         <!-- ============================================================== -->
         <!-- column -->
         <!-- ============================================================== -->
@@ -25,7 +25,8 @@
             </div>
             <!-- column -->
             <div fxFlex.gt-sm="100" fxFlex="100">
-              <button mat-raised-button type="button" (click)="crear()" color="primary">ACEPTAR</button>
+              <button mat-raised-button *ngIf="!editMode" type="button" (click)="crear()" color="primary">ACEPTAR</button>
+              <button mat-raised-button *ngIf="editMode" type="button" (click)="editar()" color="primary">ACEPTAR</button>
             </div>
           </div>
         </form>
