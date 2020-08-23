@@ -11,7 +11,7 @@
               <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
               <mat-cell *matCellDef="let element">
                 <span class="header-label">Nombre:</span>
-                {{element.nombreCompleto}}
+                {{ element.nombre }}
               </mat-cell>
             </ng-container>
 
@@ -20,8 +20,11 @@
               <mat-header-cell *matHeaderCellDef> Opciones </mat-header-cell>
               <mat-cell *matCellDef="let element">
                 <span class="header-label">Opciones:</span>
-                <button mat-icon-button (click)="editarCalificacion()" color="primary">
+                <button mat-icon-button (click)="editar()" color="primary">
                   <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="eliminar()" color="primary">
+                  <mat-icon aria-label="Example icon-button with a heart icon">delete_forever</mat-icon>
                 </button>
               </mat-cell>
             </ng-container>
