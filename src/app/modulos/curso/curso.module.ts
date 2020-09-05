@@ -49,6 +49,17 @@ import { CursoListaComponent } from './curso-lista/curso-lista.component';
             { title: 'Crear Curso' }
           ]
         }
+      },
+      {
+        path: 'editar-form/:id',
+        component: CursoCrearFormComponent,
+        data: {
+          title: 'Editar Curso',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Editar Curso' }
+          ]
+        }
       }
     ]),
     MaterialModule,

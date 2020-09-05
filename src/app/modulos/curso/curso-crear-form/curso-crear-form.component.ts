@@ -68,7 +68,7 @@ export class CursoCrearFormComponent implements OnInit {
     this.cursoService.editar(id, data)
       .subscribe(
         (response) => {
-          this.router.navigate(['/programas/lista']);
+          this.router.navigate(['/cursos/lista']);
         }
       );
   }

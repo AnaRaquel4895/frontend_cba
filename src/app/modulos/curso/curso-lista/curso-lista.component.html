@@ -1,1 +1,39 @@
-<p>curso-lista works!</p>
+<div fxLayout="row wrap">
+  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>Lista de Cursos</mat-card-title>
+        <div class="responsive-table">
+          <mat-table #table [dataSource]="dataSource">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="nombreCompleto">
+              <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Nombre:</span>
+                {{ element.nombre }}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="opciones">
+              <mat-header-cell *matHeaderCellDef> Opciones </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Opciones:</span>
+                <button mat-icon-button (click)="editar(element.id)" color="primary">
+                  <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="eliminar()" color="primary">
+                  <mat-icon aria-label="Example icon-button with a heart icon">delete_forever</mat-icon>
+                </button>
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
