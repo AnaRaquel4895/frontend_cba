@@ -5,12 +5,18 @@ import { GestionRoutingModule } from './gestion-routing.module';
 import { RouterModule } from '@angular/router';
 import { GestionListaComponent } from './gestion-lista/gestion-lista.component';
 import { GestionCrearFormComponent } from './gestion-crear-form/gestion-crear-form.component';
+import { MaterialModule } from '../../material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [GestionListaComponent, GestionCrearFormComponent],
   imports: [
     CommonModule,
+    MaterialModule,
+    FlexLayoutModule,
+    ReactiveFormsModule,
     // GestionRoutingModule
     RouterModule.forChild([
       {
@@ -32,6 +38,17 @@ import { GestionCrearFormComponent } from './gestion-crear-form/gestion-crear-fo
           urls: [
             { title: 'Dashboard', url: '/dashboard' },
             { title: 'Crear Gestion' }
+          ]
+        }
+      },
+      {
+        path: 'editar-form/:id',
+        component: GestionCrearFormComponent,
+        data: {
+          title: 'Editar Gestion',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Editar Gestion' }
           ]
         }
       }
