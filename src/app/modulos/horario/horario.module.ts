@@ -5,12 +5,17 @@ import { HorarioRoutingModule } from './horario-routing.module';
 import { RouterModule } from '@angular/router';
 import { HorarioCrearFormComponent } from './horario-crear-form/horario-crear-form.component';
 import { HorarioListaComponent } from './horario-lista/horario-lista.component';
-
+import { MaterialModule } from '../../material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [HorarioCrearFormComponent, HorarioListaComponent],
   imports: [
     CommonModule,
+    MaterialModule,
+    FlexLayoutModule,
+    ReactiveFormsModule,
     // HorarioRoutingModule
     RouterModule.forChild([
       {
@@ -32,6 +37,17 @@ import { HorarioListaComponent } from './horario-lista/horario-lista.component';
           urls: [
             { title: 'Dashboard', url: '/dashboard' },
             { title: 'Crear Horario' }
+          ]
+        }
+      },
+      {
+        path: 'editar-form/:id',
+        component: HorarioCrearFormComponent,
+        data: {
+          title: 'Editar Horario',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Editar Horario' }
           ]
         }
       }
