@@ -1,4 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { Programa } from '../../programa/models/programa';
+import { Curso } from '../../curso/models/curso';
+import { Nivel } from '../../nivel/models/nivel';
+import { Horario } from '../../horario/models/horario';
+import { Gestion } from '../../gestion/models/gestion';
+import { ProgramaService } from '../../programa/services/programa.service';
+import { CursoService } from '../../curso/services/curso.service';
+import { GestionService } from '../../gestion/services/gestion.service';
+import { HorarioService } from '../../horario/services/horario.service';
+import { NivelService } from '../../nivel/services/nivel.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-grupo-crear',
@@ -7,9 +18,50 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GrupoCrearComponent implements OnInit {
 
-  constructor() { }
+  programaLista: Programa[] = [];
+  cursoLista: Curso[] = [];
+  nivelLista: Nivel[] = [];
+  horarioLista: Horario[] = [];
+  gestionLista: Gestion[] = [];
+
+  form: FormGroup;
+
+  constructor(
+    private programaService: ProgramaService,
+    private cursoService: CursoService,
+    private nivelService: NivelService,
+    private horarioService: HorarioService,
+    private gestionService: GestionService,
+    private fb: FormBuilder,
+  ) {
+    this.initializeForm();
+  }
 
   ngOnInit(): void {
+    this.programaService.listar()
+      .subscribe((resp) => { this.programaLista = resp.data; });
+
+    this.cursoService.listar()
+      .subscribe((resp) => { this.cursoLista = resp.data; });
+
+    this.nivelService.listar()
+      .subscribe((resp) => { this.nivelLista = resp.data; });
+
+    this.horarioService.listar()
+      .subscribe((resp) => { this.horarioLista = resp.data; });
+
+    this.gestionService.listar()
+      .subscribe((resp) => { this.gestionLista = resp.data; });
+  }
+
+  private initializeForm(): void {
+    this.form = this.fb.group({
+      programa: [undefined, []],
+      curso: [undefined, []],
+      nivel: [undefined, []],
+      horario: [undefined, []],
+      gestion: [undefined, []],
+    });
   }
 
 }
