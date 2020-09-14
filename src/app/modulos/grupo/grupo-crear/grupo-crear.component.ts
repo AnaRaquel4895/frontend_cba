@@ -10,6 +10,9 @@ import { GestionService } from '../../gestion/services/gestion.service';
 import { HorarioService } from '../../horario/services/horario.service';
 import { NivelService } from '../../nivel/services/nivel.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { PerfilService } from '../../perfil/services/perfil.service';
+import { Perfil } from '../../perfil/models/perfil';
+import { RoleEnum } from '../../auth/enums/role.enum';
 
 @Component({
   selector: 'app-grupo-crear',
@@ -23,6 +26,7 @@ export class GrupoCrearComponent implements OnInit {
   nivelLista: Nivel[] = [];
   horarioLista: Horario[] = [];
   gestionLista: Gestion[] = [];
+  perfilLista: Perfil[] = [];
 
   form: FormGroup;
 
@@ -32,6 +36,7 @@ export class GrupoCrearComponent implements OnInit {
     private nivelService: NivelService,
     private horarioService: HorarioService,
     private gestionService: GestionService,
+    private perfilService: PerfilService,
     private fb: FormBuilder,
   ) {
     this.initializeForm();
@@ -52,6 +57,11 @@ export class GrupoCrearComponent implements OnInit {
 
     this.gestionService.listar()
       .subscribe((resp) => { this.gestionLista = resp.data; });
+
+    this.perfilService.listar(RoleEnum.ESTUDIANTES)
+      .subscribe((resp) => {
+        this.perfilLista = resp.data;
+      });
   }
 
   private initializeForm(): void {

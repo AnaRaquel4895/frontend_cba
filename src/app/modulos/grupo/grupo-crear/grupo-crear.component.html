@@ -12,9 +12,9 @@
             <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
               <mat-form-field>
                 <mat-select placeholder="PROFESOR">
-                  <mat-option value="option">Roberto Gomez</mat-option>
-                  <mat-option value="option">Luis Almazan</mat-option>
-                  <mat-option value="option">Arturo Claure</mat-option>
+                  <mat-option *ngFor="let perfil of perfilLista" [value]="perfil.user_id">
+                    {{ perfil.nombres+' '+perfil.apellido_paterno+' '+perfil.apellido_materno }}
+                  </mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
