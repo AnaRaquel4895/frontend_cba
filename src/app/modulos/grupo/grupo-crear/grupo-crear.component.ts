@@ -58,7 +58,7 @@ export class GrupoCrearComponent implements OnInit {
     this.gestionService.listar()
       .subscribe((resp) => { this.gestionLista = resp.data; });
 
-    this.perfilService.listar(RoleEnum.ESTUDIANTES)
+    this.perfilService.listar(RoleEnum.PROFESORES)
       .subscribe((resp) => {
         this.perfilLista = resp.data;
       });
