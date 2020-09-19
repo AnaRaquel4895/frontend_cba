@@ -17,4 +17,8 @@ export class PerfilService {
   listar(roleId: number | string): Observable<Response<Perfil[]>> {
     return this.http.get<Response<Perfil[]>>(`${apiUrl}/by-roles/${roleId}`);
   }
+
+  savePerfil(data: object): Observable<Response<any>> {
+    return this.http.post<Response<any>>(`${apiUrl}`, data);
+  }
 }

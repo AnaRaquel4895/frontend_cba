@@ -20,19 +20,19 @@
             <!-- column -->
             <div fxFlex.gt-md="100" fxFlex="100">
               <mat-form-field>
-                <input matInput formControlName="apellidopaterno" placeholder="APELLIDO PATERNO">
+                <input matInput formControlName="apellido_paterno" placeholder="APELLIDO PATERNO">
               </mat-form-field>
             </div>
             <!-- column -->
             <div fxFlex.gt-md="100" fxFlex="100">
               <mat-form-field>
-                <input matInput formControlName="apellidomaterno" placeholder="APELLIDO MATERNO">
+                <input matInput formControlName="apellido_materno" placeholder="APELLIDO MATERNO">
               </mat-form-field>
             </div>
             <!-- column -->
             <div fxFlex.gt-md="100" fxFlex="100">
               <mat-form-field>
-                <input matInput formControlName="carnetidentidad" placeholder="CARNET DE IDENTIDAD">
+                <input matInput formControlName="carnet_identidad" placeholder="CARNET DE IDENTIDAD">
               </mat-form-field>
             </div>
             <!-- column -->
@@ -44,9 +44,16 @@
             <!-- column -->
             <div fxFlex.gt-sm="100" fxFlex="100">
               <mat-form-field>
-                <mat-select placeholder="TIPO DE USUARIO">
+                <mat-select formControlName="role_id" placeholder="TIPO DE USUARIO">
                   <mat-option *ngFor="let role of rolesLista" [value]="role.id">{{role.name}}</mat-option>
                 </mat-select>
+              </mat-form-field>
+            </div>
+            <!-- Data to register a user -->
+            <!-- column -->
+            <div fxFlex.gt-md="100" fxFlex="100">
+              <mat-form-field>
+                <input matInput formControlName="name" placeholder="NOMBRE DE USUARIO">
               </mat-form-field>
             </div>
             <!-- column -->
@@ -64,7 +71,7 @@
             <!-------------------------------------------------------------------->
             <!-- column -->
             <div fxFlex.gt-sm="100" fxFlex="100">
-              <button mat-raised-button type="button" (click)="saveUsuario()" color="primary" >ACEPTAR</button>
+              <button mat-raised-button type="button" (click)="saveUsuario()" color="primary">ACEPTAR</button>
             </div>
           </div>
         </form>
