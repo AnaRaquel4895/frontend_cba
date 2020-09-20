@@ -13,6 +13,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { PerfilService } from '../../perfil/services/perfil.service';
 import { Perfil } from '../../perfil/models/perfil';
 import { RoleEnum } from '../../auth/enums/role.enum';
+import { Router } from '@angular/router';
+import { GrupoService } from '../services/grupo.service';
 
 @Component({
   selector: 'app-grupo-crear',
@@ -38,6 +40,7 @@ export class GrupoCrearComponent implements OnInit {
     private gestionService: GestionService,
     private perfilService: PerfilService,
     private fb: FormBuilder,
+    private grupoService: GrupoService
   ) {
     this.initializeForm();
   }
@@ -66,12 +69,22 @@ export class GrupoCrearComponent implements OnInit {
 
   private initializeForm(): void {
     this.form = this.fb.group({
-      programa: [undefined, []],
-      curso: [undefined, []],
-      nivel: [undefined, []],
-      horario: [undefined, []],
-      gestion: [undefined, []],
+      perfil_usuario_id: [undefined, []],
+      programa_id: [undefined, []],
+      curso_id: [undefined, []],
+      nivel_id: [undefined, []],
+      horario_id: [undefined, []],
+      gestion_id: [undefined, []],
     });
   }
 
+  crear(): void {
+    this.grupoService.crear(this.form.value)
+      .subscribe(
+        (response) => {
+          console.log('EL GRUPO SE CREO: ', response);
+          // this.router.navigate(['/gestiones/lista']);
+        }
+      );
+  }
 }

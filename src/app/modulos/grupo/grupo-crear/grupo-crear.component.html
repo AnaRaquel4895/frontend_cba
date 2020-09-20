@@ -11,7 +11,7 @@
             <!-- column -->
             <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
               <mat-form-field>
-                <mat-select placeholder="PROFESOR">
+                <mat-select formControlName="perfil_usuario_id" placeholder="PROFESOR">
                   <mat-option *ngFor="let perfil of perfilLista" [value]="perfil.user_id">
                     {{ perfil.nombres+' '+perfil.apellido_paterno+' '+perfil.apellido_materno }}
                   </mat-option>
@@ -21,7 +21,7 @@
             <!-- column -->
             <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
               <mat-form-field>
-                <mat-select formControlName="programa" placeholder="PROGRAMA">
+                <mat-select formControlName="programa_id" placeholder="PROGRAMA">
                   <mat-option *ngFor="let programa of programaLista" [value]="programa.id">{{ programa.nombre }}
                   </mat-option>
                 </mat-select>
@@ -30,7 +30,7 @@
             <!-- column -->
             <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
               <mat-form-field>
-                <mat-select formControlName="curso" placeholder="CURSO">
+                <mat-select formControlName="curso_id" placeholder="CURSO">
                   <mat-option *ngFor="let curso of cursoLista" [value]="curso.id">{{ curso.nombre }}</mat-option>
                 </mat-select>
               </mat-form-field>
@@ -38,7 +38,7 @@
             <!-- column -->
             <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
               <mat-form-field>
-                <mat-select formControlName="nivel" placeholder="Nivel">
+                <mat-select formControlName="nivel_id" placeholder="Nivel">
                   <mat-option *ngFor="let nivel of nivelLista" [value]="nivel.id">{{ nivel.nombre }}</mat-option>
                 </mat-select>
               </mat-form-field>
@@ -46,7 +46,7 @@
             <!-- column -->
             <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
               <mat-form-field>
-                <mat-select formControlName="horario" placeholder="HORARIO">
+                <mat-select formControlName="horario_id" placeholder="HORARIO">
                   <mat-option *ngFor="let horario of horarioLista" [value]="horario.id">{{ horario.nombre }}
                   </mat-option>
                 </mat-select>
@@ -55,7 +55,7 @@
             <!-- column -->
             <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
               <mat-form-field>
-                <mat-select formControlName="gestion" placeholder="GESTION">
+                <mat-select formControlName="gestion_id" placeholder="GESTION">
                   <mat-option *ngFor="let gestion of gestionLista" [value]="gestion.id">{{ gestion.nombre }}
                   </mat-option>
                 </mat-select>
@@ -63,7 +63,7 @@
             </div>
             <!-- column -->
             <div fxFlex.gt-sm="100" fxFlex="100">
-              <button mat-raised-button color="primary">ACEPTAR</button>
+              <button mat-raised-button color="primary" (click)="crear()">ACEPTAR</button>
             </div>
           </div>
         </form>

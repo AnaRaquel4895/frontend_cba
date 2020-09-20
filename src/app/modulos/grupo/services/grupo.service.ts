@@ -5,7 +5,7 @@ import { environment } from '../../../../environments/environment';
 import { Response } from '../../../models/response';
 import { Grupo } from '../models/grupo';
 
-const apiUrl = environment.apiUrl + '/gestiones';
+const apiUrl = environment.apiUrl + '/grupos';
 @Injectable({
   providedIn: 'root'
 })
