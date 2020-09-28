@@ -2,6 +2,47 @@
   <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
     <mat-card>
       <mat-card-content>
+        <mat-card-title>Información del grupo:</mat-card-title>
+        <!-- ============================================================== -->
+        <!-- column -->
+        <!-- ============================================================== -->
+        <form class="basic-form">
+          <div fxLayout="row wrap" fxFlexAlign="center" class="row">
+            <!-- column -->
+            <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+              <mat-form-field>
+                <input matInput placeholder="N°. Grupo" value="X" readonly>
+              </mat-form-field>
+            </div>
+            <!-- column -->
+            <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+              <mat-form-field>
+                <input matInput placeholder="Curso" value='AIT-5A' readonly>
+              </mat-form-field>
+            </div>
+            <!-- column -->
+            <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+              <mat-form-field>
+                <input matInput placeholder="Horario" value='10:30-13:30' readonly>
+              </mat-form-field>
+            </div>         
+            <!-- column -->
+            <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+              <mat-form-field>
+                <input matInput placeholder="Profesor" value="Juan Perez Perez" readonly>
+              </mat-form-field>
+            </div>
+          </div>
+        </form>
+        <mat-card-actions>
+          <!-- class="btn-block btn-lg m-t-5 m-b-10" -->
+          <button mat-raised-button color="primary" class="btn-block"  type="button">Registrar nuevo
+            alumno al grupo</button>
+      </mat-card-actions>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-content>
         <mat-card-title>Lista de Alumnos inscritos al grupo:</mat-card-title>
         <div class="responsive-table">
           <mat-table #table [dataSource]="dataSource">
