@@ -15,6 +15,7 @@ export class GrupoListaInscritosComponent implements OnInit {
 
   displayedColumns = ['nombres', 'apellidoPaterno', 'apellidoMaterno', 'opciones'];
   dataSource = new MatTableDataSource<Inscritos>(ELEMENT_DATA);
+  isVisibleListaEstudiantes: boolean = false;
   grupo: GrupoResourceList;
 
   constructor(breakpointObserver: BreakpointObserver,
@@ -32,13 +33,17 @@ export class GrupoListaInscritosComponent implements OnInit {
           return this.grupoService.recuperar(Number(params.get('id')));
         })
       )
-      .subscribe((response)=>{
+      .subscribe((response) => {
         this.grupo = response.data;
       });
 
   }
 
   ngOnInit(): void {
+  }
+
+  mostarListaEstudiantes(): void {
+    this.isVisibleListaEstudiantes = true;
   }
 
 }

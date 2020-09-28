@@ -2,7 +2,7 @@
   <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
     <mat-card>
       <mat-card-content>
-        <mat-card-title>Filterable table</mat-card-title>
+        <mat-card-title>Seleccione un estudiante</mat-card-title>
         <div class="bg-light p-10 p-r-20 p-l-20">
           <mat-form-field>
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search (Filter)">
@@ -13,26 +13,28 @@
           <mat-table #table [dataSource]="dataSource">
             <!-- Position Column -->
             <ng-container matColumnDef="position">
-              <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+              <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.nombres}} </mat-cell>
             </ng-container>
 
             <!-- Name Column -->
             <ng-container matColumnDef="name">
-              <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+              <mat-header-cell *matHeaderCellDef> Apellido Paterno </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.apellido_paterno}} </mat-cell>
             </ng-container>
 
             <!-- Weight Column -->
             <ng-container matColumnDef="weight">
-              <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+              <mat-header-cell *matHeaderCellDef> Apellido Materno </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.apellido_materno}} </mat-cell>
             </ng-container>
 
             <!-- Symbol Column -->
             <ng-container matColumnDef="symbol">
-              <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+              <mat-header-cell *matHeaderCellDef> Opciones </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <button mat-raised-button type="button" color="primary">Registrar</button>
+              </mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
