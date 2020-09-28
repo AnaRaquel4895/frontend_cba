@@ -9,10 +9,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GrupoListaComponent } from './grupo-lista/grupo-lista.component';
 import { GrupoListaInscritosComponent } from './grupo-lista-inscritos/grupo-lista-inscritos.component';
+import { GrupoSelectInscripcionComponent } from './grupo-select-inscripcion/grupo-select-inscripcion.component';
 
 
 @NgModule({
-  declarations: [GrupoCrearComponent, GrupoListaComponent, GrupoListaInscritosComponent],
+  declarations: [GrupoCrearComponent, GrupoListaComponent, GrupoListaInscritosComponent, GrupoSelectInscripcionComponent],
   imports: [
     CommonModule,
 
