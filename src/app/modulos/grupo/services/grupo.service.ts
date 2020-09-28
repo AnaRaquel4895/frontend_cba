@@ -16,7 +16,7 @@ export class GrupoService {
     return this.http.post<Response<Grupo>>(apiUrl, data);
   }
 
-  listar(): Observable<Response<Grupo[]>> {
+  listar(): Observable<Response<any[]>> {
     return this.http.get<Response<Grupo[]>>(apiUrl);
   }
 

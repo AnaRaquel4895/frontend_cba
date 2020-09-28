@@ -40,7 +40,8 @@ export class GrupoCrearComponent implements OnInit {
     private gestionService: GestionService,
     private perfilService: PerfilService,
     private fb: FormBuilder,
-    private grupoService: GrupoService
+    private grupoService: GrupoService,
+    private router: Router
   ) {
     this.initializeForm();
   }
@@ -82,8 +83,7 @@ export class GrupoCrearComponent implements OnInit {
     this.grupoService.crear(this.form.value)
       .subscribe(
         (response) => {
-          console.log('EL GRUPO SE CREO: ', response);
-          // this.router.navigate(['/gestiones/lista']);
+          this.router.navigate(['/grupos/lista']);
         }
       );
   }

@@ -6,4 +6,5 @@ export interface Grupo {
   nivel_id: number;
   horario_id: number;
   gestion_id: number;
+  numero?: number;
 }
