@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { GrupoResourceList } from '../models/grupo-resource-list';
+import { GrupoService } from '../services/grupo.service';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-grupo-lista-inscritos',
@@ -11,13 +15,27 @@ export class GrupoListaInscritosComponent implements OnInit {
 
   displayedColumns = ['nombres', 'apellidoPaterno', 'apellidoMaterno', 'opciones'];
   dataSource = new MatTableDataSource<Inscritos>(ELEMENT_DATA);
+  grupo: GrupoResourceList;
 
-  constructor(breakpointObserver: BreakpointObserver) {
+  constructor(breakpointObserver: BreakpointObserver,
+    private grupoService: GrupoService,
+    private activatedRoute: ActivatedRoute) {
     breakpointObserver.observe(['(max-width: 600px)']).subscribe(result => {
       this.displayedColumns = result.matches ?
         ['nombres', 'apellidoPaterno', 'apellidoMaterno', 'opciones'] :
         ['nombres', 'apellidoPaterno', 'apellidoMaterno', 'opciones'];
     });
+    this.grupoService.recuperar(1)
+    this.activatedRoute.paramMap
+      .pipe(
+        switchMap(params => {
+          return this.grupoService.recuperar(Number(params.get('id')));
+        })
+      )
+      .subscribe((response)=>{
+        this.grupo = response.data;
+      });
+
   }
 
   ngOnInit(): void {

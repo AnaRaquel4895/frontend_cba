@@ -48,7 +48,7 @@
               <mat-cell *matCellDef="let element">
                 <span class="header-label">Opciones:</span>
                 <button mat-icon-button matTooltip="Lista de Alumnos" color="primary"
-                  [routerLink]="['/grupos/lista-inscritos']">
+                  [routerLink]="['/grupos/lista-inscritos',element.id]">
                   <mat-icon aria-label="Example icon-button with a heart icon">list</mat-icon>
                 </button>
                 <button mat-icon-button matTooltip="Editar Grupo" color="primary">

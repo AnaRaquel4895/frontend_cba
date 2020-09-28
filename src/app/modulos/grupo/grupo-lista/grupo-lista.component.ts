@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { GrupoService } from '../services/grupo.service';
-import { Grupo } from '../models/grupo';
+import { GrupoResourceList } from '../models/grupo-resource-list';
 
 @Component({
   selector: 'app-grupo-lista',
@@ -34,13 +34,4 @@ export class GrupoListaComponent implements OnInit {
       );
   }
 
-}
-
-export interface GrupoResourceList extends Grupo {
-  usuario_nombre_completo: string;
-  programa_nombre: string;
-  curso_nombre: string;
-  nivel_nombre: string;
-  horario_nombre: string;
-  gestion_nombre: string;
 }

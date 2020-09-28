@@ -41,7 +41,7 @@ import { GrupoListaInscritosComponent } from './grupo-lista-inscritos/grupo-list
         }
       },
       {
-        path: 'lista-inscritos',
+        path: 'lista-inscritos/:id',
         component: GrupoListaInscritosComponent,
         data: {
           title: 'Lista de inscritos',

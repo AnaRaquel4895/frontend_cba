@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { Response } from '../../../models/response';
 import { Grupo } from '../models/grupo';
+import { GrupoResourceList } from '../models/grupo-resource-list';
 
 const apiUrl = environment.apiUrl + '/grupos';
 @Injectable({
@@ -20,4 +21,7 @@ export class GrupoService {
     return this.http.get<Response<Grupo[]>>(apiUrl);
   }
 
+  recuperar(id: number): Observable<Response<GrupoResourceList>> {
+    return this.http.get<Response<GrupoResourceList>>(`${apiUrl}/${id}`);
+  }
 }
