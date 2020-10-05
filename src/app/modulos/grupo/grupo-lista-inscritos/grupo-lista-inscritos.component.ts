@@ -5,6 +5,8 @@ import { GrupoResourceList } from '../models/grupo-resource-list';
 import { GrupoService } from '../services/grupo.service';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { InscripcionService } from '../services/inscripcion.service';
+import { InscripcionGrupo } from '../models/inscripcion-grupo';
 
 @Component({
   selector: 'app-grupo-lista-inscritos',
@@ -14,19 +16,27 @@ import { switchMap } from 'rxjs/operators';
 export class GrupoListaInscritosComponent implements OnInit {
 
   displayedColumns = ['nombres', 'apellidoPaterno', 'apellidoMaterno', 'opciones'];
-  dataSource = new MatTableDataSource<Inscritos>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<InscripcionGrupo>([]);
   isVisibleListaEstudiantes: boolean = false;
   grupo: GrupoResourceList;
+  private data: InscripcionGrupo[] = [];
+  perfilIdInscritosLista: number[] = [];
+
 
   constructor(breakpointObserver: BreakpointObserver,
     private grupoService: GrupoService,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private inscripcionService: InscripcionService) {
     breakpointObserver.observe(['(max-width: 600px)']).subscribe(result => {
       this.displayedColumns = result.matches ?
         ['nombres', 'apellidoPaterno', 'apellidoMaterno', 'opciones'] :
         ['nombres', 'apellidoPaterno', 'apellidoMaterno', 'opciones'];
     });
-    this.grupoService.recuperar(1)
+
+
+  }
+
+  ngOnInit(): void {
     this.activatedRoute.paramMap
       .pipe(
         switchMap(params => {
@@ -37,29 +47,40 @@ export class GrupoListaInscritosComponent implements OnInit {
         this.grupo = response.data;
       });
 
-  }
+    this.activatedRoute.paramMap
+      .pipe(
+        switchMap(params => {
+          return this.inscripcionService.listarIncripcionesByGrupo(Number(params.get('id')));
+        })
+      )
+      .subscribe((response) => {
+        this.data = response.data;
+        this.dataSource = new MatTableDataSource<InscripcionGrupo>(this.data);
 
-  ngOnInit(): void {
+        this.perfilIdInscritosLista = this.data.map(x => x.perfil_usuario_id);
+
+      });
   }
 
   mostarListaEstudiantes(): void {
     this.isVisibleListaEstudiantes = true;
   }
 
+  agregarEstudiante(inscripcion: InscripcionGrupo): void {
+    this.data.push(inscripcion);
+    this.dataSource = new MatTableDataSource(this.data);
+    this.perfilIdInscritosLista = this.data.map(x => x.perfil_usuario_id);
+    this.isVisibleListaEstudiantes = false;
+  }
+
+  eliminarInscripcion(inscripcionId: number): void {
+    this.inscripcionService.eliminarInscripcion(inscripcionId)
+      .subscribe((response) => {
+        this.data = this.data.filter(x => x.id !== inscripcionId);
+        this.dataSource = new MatTableDataSource<InscripcionGrupo>(this.data);
+        this.perfilIdInscritosLista = this.data.map(x => x.perfil_usuario_id);
+      });
+  }
+
 }
 
-export interface Inscritos {
-  nombres: string; // N° grupo
-  apellidoPaterno: string; // Curso
-  apellidoMaterno: string; // Horario
-}
-
-const ELEMENT_DATA: Inscritos[] = [
-  { nombres: 'Jorge Luis', apellidoPaterno: 'Aramayo', apellidoMaterno: 'Almazan', },
-  { nombres: 'Ana Maria', apellidoPaterno: 'Rojas', apellidoMaterno: 'Rojas', },
-  { nombres: 'Ana Gisella', apellidoPaterno: 'Noguera', apellidoMaterno: 'Flores', },
-  { nombres: 'Pedro Armando', apellidoPaterno: 'Calizaya', apellidoMaterno: 'Aramayo', },
-  { nombres: 'Jose Maria', apellidoPaterno: 'Mamani', apellidoMaterno: 'Alba', },
-  { nombres: 'Ana Paola', apellidoPaterno: 'Gomez', apellidoMaterno: 'Fernandes', },
-  { nombres: 'Maria Jhanet', apellidoPaterno: 'Claros', apellidoMaterno: 'Cespedes', }
-];

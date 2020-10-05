@@ -33,7 +33,7 @@
             <ng-container matColumnDef="symbol">
               <mat-header-cell *matHeaderCellDef> Opciones </mat-header-cell>
               <mat-cell *matCellDef="let element">
-                <button mat-raised-button type="button" color="primary">Registrar</button>
+                <button mat-raised-button (click)="registrarEstudiante(element.id)" type="button" color="primary">Registrar</button>
               </mat-cell>
             </ng-container>
 
