@@ -22,7 +22,7 @@ export class InscripcionService {
     return this.http.post<Response<InscripcionGrupo>>(apiUrl, data);
   }
 
-  listarIncripcionesByGrupo(grupoId: number): Observable<Response<any[]>> {
+  listarIncripcionesByGrupo(grupoId: number): Observable<Response<InscripcionGrupo[]>> {
     return this.http.get<Response<InscripcionGrupo[]>>(`${apiUrl}/by-grupo/${grupoId}`);
   }
 

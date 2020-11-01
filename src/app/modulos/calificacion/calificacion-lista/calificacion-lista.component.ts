@@ -3,6 +3,14 @@ import { MatTableDataSource } from '@angular/material/table';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material/dialog';
 import { CalificacionEditarComponent } from '../calificacion-editar/calificacion-editar.component';
+import { InscripcionService } from '../../grupo/services/inscripcion.service';
+import { GrupoService } from '../../grupo/services/grupo.service';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { GrupoResourceList } from '../../grupo/models/grupo-resource-list';
+import { InscripcionGrupo } from '../../grupo/models/inscripcion-grupo';
+import { CalificacionInscripcion } from '../../grupo/models/calificacion-inscripcion';
+import { Perfil } from '../../perfil/models/perfil';
 
 @Component({
   selector: 'app-calificacion-lista',
@@ -12,38 +20,78 @@ import { CalificacionEditarComponent } from '../calificacion-editar/calificacion
 export class CalificacionListaComponent implements OnInit {
 
 
-  displayedColumns = ['nombreCompleto', 'periodo', 'fecha', 'firstQuiz',
-    'secondQuiz', 'midterm', 'thirdQuiz', 'finalExam', 'nota', 'comentarios', 'opciones'];
-  dataSource = new MatTableDataSource<Inscrito>(ELEMENT_DATA);
+  displayedColumns = ['nombreCompleto', 'quiz1', 'quiz2', 'midterm',
+    'quiz3', 'quiz4', 'finalExam', 'nota', 'comentarios', 'opciones'];
+  dataSource = new MatTableDataSource<InscripcionGrupo>([]);
 
-  constructor(public breakpointObserver: BreakpointObserver, public dialog: MatDialog) {
+  grupo: GrupoResourceList = undefined;
+
+  constructor(public breakpointObserver: BreakpointObserver,
+    public dialog: MatDialog,
+    private activatedRoute: ActivatedRoute,
+    private inscripcionService: InscripcionService,
+    private grupoService: GrupoService) {
     breakpointObserver.observe(['(max-width: 600px)']).subscribe(result => {
       this.displayedColumns = result.matches ?
-        ['nombreCompleto', 'periodo', 'fecha', 'firstQuiz',
-          'secondQuiz', 'midterm', 'thirdQuiz', 'finalExam', 'nota', 'comentarios', 'opciones'] :
-        ['nombreCompleto', 'periodo', 'fecha', 'firstQuiz',
-          'secondQuiz', 'midterm', 'thirdQuiz', 'finalExam', 'nota', 'comentarios', 'opciones'];
+        ['nombreCompleto', 'quiz1', 'quiz2', 'midterm',
+          'quiz3', 'quiz4', 'finalExam', 'nota', 'comentarios', 'opciones'] :
+        ['nombreCompleto', 'quiz1', 'quiz2', 'midterm',
+          'quiz3', 'quiz4', 'finalExam', 'nota', 'comentarios', 'opciones'];
     });
   }
 
   ngOnInit(): void {
+    this.activatedRoute.paramMap.pipe(
+      switchMap((params) => {
+        const idGrupo = Number(params.get('idInscripcion'));
+        return this.grupoService.recuperar(idGrupo);
+      })
+    ).subscribe(
+      (response) => {
+        this.grupo = response.data;
+      }
+    );
+
+    this.activatedRoute.paramMap.pipe(
+      switchMap((params) => {
+        const idGrupo = Number(params.get('idInscripcion'));
+        return this.inscripcionService.listarIncripcionesByGrupo(idGrupo);
+      })
+    ).subscribe(
+      (response) => {
+        this.dataSource = new MatTableDataSource<InscripcionGrupo>(response.data);
+      }
+    );
   }
 
-  editarCalificacion(): void {
-    this.openDialog();
+  editarCalificacion(element: InscripcionGrupo): void {
+    this.openDialog(element.calificacion_inscripcion, element.perfil_usuario);
   }
 
-
-  openDialog(): void {
+  openDialog(calificacion: CalificacionInscripcion, perfil: Perfil): void {
     const dialogRef = this.dialog.open(CalificacionEditarComponent, {
       width: '500px',
-      data: {}
+      data: {
+        nombreCompleto: `${perfil.nombres} ${perfil.apellido_paterno} ${perfil.apellido_materno}`,
+        formData: {
+          id: calificacion.id,
+          quiz1: calificacion.quiz1,
+          quiz2: calificacion.quiz2,
+          quiz3: calificacion.quiz3,
+          quiz4: calificacion.quiz4,
+          comments: calificacion.comments
+        }
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('The dialog was closed: ', result);
 
     });
+  }
+
+  getCalificacion(data: InscripcionGrupo): CalificacionInscripcion {
+    return data.calificacion_inscripcion;
   }
 }
 

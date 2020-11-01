@@ -2,7 +2,8 @@
   <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
     <mat-card>
       <mat-card-content>
-        <mat-card-title>Calificaciones del curso AIT-B1 horario: 19:00-22:00</mat-card-title>
+        <mat-card-title *ngIf="grupo">Calificaciones del curso {{ grupo.curso_nombre + '-' + grupo.nivel_nombre}}
+          horario: {{ grupo.horario_nombre }}</mat-card-title>
         <div class="responsive-table">
           <mat-table #table [dataSource]="dataSource">
 
@@ -11,61 +12,52 @@
               <mat-header-cell *matHeaderCellDef> Alumno </mat-header-cell>
               <mat-cell *matCellDef="let element">
                 <span class="header-label">Alumno:</span>
-                {{element.nombreCompleto}}
+                {{ element.perfil_usuario.nombres+' '+element.perfil_usuario.apellido_paterno+' '+element.perfil_usuario.apellido_materno }}
               </mat-cell>
             </ng-container>
 
             <!-- Name Column -->
-            <ng-container matColumnDef="periodo">
-              <mat-header-cell *matHeaderCellDef> Periodo </mat-header-cell>
+            <ng-container matColumnDef="quiz1">
+              <mat-header-cell *matHeaderCellDef> Quiz 1 </mat-header-cell>
               <mat-cell *matCellDef="let element">
-                <span class="header-label">Periodo:</span>
-                {{element.periodo}}
+                <span class="header-label">Quiz 1:</span>
+                {{ getCalificacion(element).quiz1 }}
               </mat-cell>
             </ng-container>
 
             <!-- Weight Column -->
-            <ng-container matColumnDef="fecha">
-              <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
-              <mat-cell *matCellDef="let element">
-                <span class="header-label">Fecha:</span>
-                {{element.fecha}}
-              </mat-cell>
-            </ng-container>
-
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="firstQuiz">
-              <mat-header-cell *matHeaderCellDef> Quiz 1 </mat-header-cell>
-              <mat-cell *matCellDef="let element">
-                <span class="header-label">Quiz 1:</span>
-                {{element.firstQuiz}}
-              </mat-cell>
-            </ng-container>
-
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="secondQuiz">
+            <ng-container matColumnDef="quiz2">
               <mat-header-cell *matHeaderCellDef> Quiz 2 </mat-header-cell>
               <mat-cell *matCellDef="let element">
                 <span class="header-label">Quiz 2:</span>
-                {{element.secondQuiz}}
+                {{ getCalificacion(element).quiz2 }}
               </mat-cell>
             </ng-container>
 
-            <!-- Position Column -->
+            <!-- Symbol Column -->
             <ng-container matColumnDef="midterm">
-              <mat-header-cell *matHeaderCellDef> Midterm </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef> MidTerm </mat-header-cell>
               <mat-cell *matCellDef="let element">
-                <span class="header-label">Midterm:</span>
-                {{element.midterm}}
+                <span class="header-label">MidTerm:</span>
+                {{ '0' }}
               </mat-cell>
             </ng-container>
 
-            <!-- Position Column -->
-            <ng-container matColumnDef="thirdQuiz">
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="quiz3">
               <mat-header-cell *matHeaderCellDef> Quiz 3 </mat-header-cell>
               <mat-cell *matCellDef="let element">
                 <span class="header-label">Quiz 3:</span>
-                {{element.thirdQuiz}}
+                {{ getCalificacion(element).quiz3 }}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="quiz4">
+              <mat-header-cell *matHeaderCellDef> Quiz 4 </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Quiz 4:</span>
+                {{ getCalificacion(element).quiz4 }}
               </mat-cell>
             </ng-container>
 
@@ -74,7 +66,7 @@
               <mat-header-cell *matHeaderCellDef> Final Exam </mat-header-cell>
               <mat-cell *matCellDef="let element">
                 <span class="header-label">Final Exam:</span>
-                {{element.finalExam}}
+                {{ '0' }}
               </mat-cell>
             </ng-container>
 
@@ -83,7 +75,7 @@
               <mat-header-cell *matHeaderCellDef> Nota </mat-header-cell>
               <mat-cell *matCellDef="let element">
                 <span class="header-label">Nota:</span>
-                {{element.nota}}
+                {{ '0' }}
               </mat-cell>
             </ng-container>
 
@@ -92,7 +84,7 @@
               <mat-header-cell *matHeaderCellDef> Comentarios </mat-header-cell>
               <mat-cell *matCellDef="let element">
                 <span class="header-label">Comentarios:</span>
-                {{element.comentarios}}
+                {{ getCalificacion(element).comments }}
               </mat-cell>
             </ng-container>
 
@@ -101,7 +93,7 @@
               <mat-header-cell *matHeaderCellDef> Opciones </mat-header-cell>
               <mat-cell *matCellDef="let element">
                 <span class="header-label">Opciones:</span>
-                <button mat-icon-button (click)="editarCalificacion()" color="primary">
+                <button mat-icon-button (click)="editarCalificacion(element)" color="primary">
                   <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
                 </button>
               </mat-cell>

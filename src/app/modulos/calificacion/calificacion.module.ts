@@ -7,6 +7,7 @@ import { MaterialModule } from '../../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CalificacionListaComponent } from './calificacion-lista/calificacion-lista.component';
 import { CalificacionEditarComponent } from './calificacion-editar/calificacion-editar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { CalificacionEditarComponent } from './calificacion-editar/calificacion-
         }
       },
       {
-        path: 'lista',
+        path: 'lista/:idInscripcion',
         component: CalificacionListaComponent,
         data: {
           title: 'Calificaciones',
@@ -40,8 +41,9 @@ import { CalificacionEditarComponent } from './calificacion-editar/calificacion-
     ]),
     MaterialModule,
     FlexLayoutModule,
+    ReactiveFormsModule
   ],
-  entryComponents:[
+  entryComponents: [
     CalificacionEditarComponent
   ]
 })

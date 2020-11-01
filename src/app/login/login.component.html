@@ -37,7 +37,7 @@
                 </div>
                 <!-- col full-->
                 <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
-                    <button mat-raised-button color="primary" class="btn-block btn-lg m-t-20 m-b-20" (click)="check(u1.value, p2.value)" type="button">Iniciar sesión</button>
+                    <button mat-raised-button color="primary" [disabled]="isLoadingLogin"  class="btn-block btn-lg m-t-20 m-b-20" (click)="check(u1.value, p2.value)" type="button">Iniciar sesión</button>
                 </div>
                 <!-- col full-->
                 <!--

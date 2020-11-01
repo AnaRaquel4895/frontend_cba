@@ -11,7 +11,7 @@
               <mat-header-cell *matHeaderCellDef> N°. Grupo </mat-header-cell>
               <mat-cell *matCellDef="let element">
                 <span class="header-label">N°. Grupo:</span>
-                {{element.position}}
+                #
               </mat-cell>
             </ng-container>
 
@@ -20,7 +20,7 @@
               <mat-header-cell *matHeaderCellDef> Curso </mat-header-cell>
               <mat-cell *matCellDef="let element">
                 <span class="header-label">Curso:</span>
-                {{element.name}}
+                {{ element.curso_nombre+'-'+element.nivel_nombre }}
               </mat-cell>
             </ng-container>
 
@@ -29,7 +29,7 @@
               <mat-header-cell *matHeaderCellDef> Horario </mat-header-cell>
               <mat-cell *matCellDef="let element">
                 <span class="header-label">Horario:</span>
-                {{element.weight}}
+                {{element.horario_nombre}}
               </mat-cell>
             </ng-container>
 
@@ -38,7 +38,7 @@
               <mat-header-cell *matHeaderCellDef> Profesor </mat-header-cell>
               <mat-cell *matCellDef="let element">
                 <span class="header-label">Profesor:</span>
-                {{element.symbol}}
+                {{element.usuario_nombre_completo}}
               </mat-cell>
             </ng-container>
 

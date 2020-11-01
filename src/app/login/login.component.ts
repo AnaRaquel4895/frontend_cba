@@ -18,6 +18,7 @@ import { AuthService } from '../modulos/auth/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   msg = '';
+  isLoadingLogin = false;
   constructor(
     private service: MyserviceService,
     private routes: Router,
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   check(uname: string, p: string) {
+    this.isLoadingLogin = true;
     this.authService.login({
       email: uname,
       password: p
@@ -38,6 +40,9 @@ export class LoginComponent implements OnInit {
           console.log('Error: ', err);
           this.msg = 'Los credenciales ingresados no coinciden con ninguna cuenta';
 
+        },
+        () => {
+          this.isLoadingLogin = false;
         }
       );
   }
