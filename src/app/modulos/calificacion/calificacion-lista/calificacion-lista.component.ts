@@ -6,7 +6,7 @@ import { CalificacionEditarComponent } from '../calificacion-editar/calificacion
 import { InscripcionService } from '../../grupo/services/inscripcion.service';
 import { GrupoService } from '../../grupo/services/grupo.service';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { GrupoResourceList } from '../../grupo/models/grupo-resource-list';
 import { InscripcionGrupo } from '../../grupo/models/inscripcion-grupo';
 import { CalificacionInscripcion } from '../../grupo/models/calificacion-inscripcion';
@@ -25,6 +25,8 @@ export class CalificacionListaComponent implements OnInit {
   dataSource = new MatTableDataSource<InscripcionGrupo>([]);
 
   grupo: GrupoResourceList = undefined;
+
+  inscripcionGrupoList: InscripcionGrupo[] = [];
 
   constructor(public breakpointObserver: BreakpointObserver,
     public dialog: MatDialog,
@@ -60,6 +62,7 @@ export class CalificacionListaComponent implements OnInit {
     ).subscribe(
       (response) => {
         this.dataSource = new MatTableDataSource<InscripcionGrupo>(response.data);
+        this.inscripcionGrupoList = response.data;
       }
     );
   }
@@ -84,65 +87,22 @@ export class CalificacionListaComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed: ', result);
-
-    });
+    dialogRef.afterClosed()
+      .pipe(map(x => x as CalificacionInscripcion))
+      .subscribe(result => {
+        if (result) {
+          const element = this.inscripcionGrupoList.find(e => e.id === result.id);
+          element.calificacion_inscripcion.comments = result.comments;
+          element.calificacion_inscripcion.quiz1 = result.quiz1;
+          element.calificacion_inscripcion.quiz2 = result.quiz2;
+          element.calificacion_inscripcion.quiz3 = result.quiz3;
+          element.calificacion_inscripcion.quiz4 = result.quiz4;
+          this.dataSource = new MatTableDataSource<InscripcionGrupo>(this.inscripcionGrupoList);
+        }
+      });
   }
 
   getCalificacion(data: InscripcionGrupo): CalificacionInscripcion {
     return data.calificacion_inscripcion;
   }
-}
-
-const ELEMENT_DATA: Inscrito[] = [
-  {
-    nombreCompleto: 'Will Smith',
-    periodo: '',
-    fecha: '',
-    firstQuiz: 0,
-    secondQuiz: 0,
-    midterm: 0,
-    thirdQuiz: 0,
-    finalExam: 0,
-    nota: 0,
-    comentarios: ''
-  },
-  {
-    nombreCompleto: 'Johnny Depp',
-    periodo: 'Feb-20',
-    fecha: '23/02/2020',
-    firstQuiz: 30,
-    secondQuiz: 40,
-    midterm: 70,
-    thirdQuiz: 35,
-    finalExam: 60,
-    nota: 83,
-    comentarios: 'Well done'
-  },
-  {
-    nombreCompleto: 'Adam Sandler',
-    periodo: '',
-    fecha: '',
-    firstQuiz: 0,
-    secondQuiz: 0,
-    midterm: 0,
-    thirdQuiz: 0,
-    finalExam: 0,
-    nota: 0,
-    comentarios: ''
-  },
-];
-
-export class Inscrito {
-  nombreCompleto: string;
-  periodo: string;
-  fecha: string;
-  firstQuiz: number;
-  secondQuiz: number;
-  midterm: number;
-  thirdQuiz: number;
-  finalExam: number;
-  nota: number;
-  comentarios: string;
 }

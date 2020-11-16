@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CalificacionInscripcionService } from '../services/calificacion-inscripcion.service';
 
 @Component({
   selector: 'app-calificacion-editar',
@@ -14,7 +15,8 @@ export class CalificacionEditarComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<CalificacionEditarComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public fb: FormBuilder
+    public fb: FormBuilder,
+    private calificacionInscripcionService: CalificacionInscripcionService
   ) {
     this.startForm();
   }
@@ -33,6 +35,15 @@ export class CalificacionEditarComponent implements OnInit {
   ngOnInit(): void {
     this.nombreCompleto = this.data.nombreCompleto;
     this.form.setValue(this.data.formData);
+  }
+
+  onYesClick(): void {
+    this.calificacionInscripcionService.editar(Number(this.form.get('id').value), this.form.value)
+      .subscribe(
+        (response) => {
+          this.dialogRef.close(response.data);
+        }
+      );
   }
 
   onNoClick(): void {

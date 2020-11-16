@@ -86,6 +86,6 @@
 </div>
 
 <div mat-dialog-actions>
-  <button mat-button tabindex="2">Aceptar</button>
+  <button mat-button (click)="onYesClick()" tabindex="2">Aceptar</button>
   <button mat-button (click)="onNoClick()" tabindex="-1">Cancelar</button>
 </div>
