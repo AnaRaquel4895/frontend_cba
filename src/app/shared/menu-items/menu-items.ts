@@ -37,6 +37,12 @@ const MENUITEMS = [
         type: 'link',
         icon: 'content_copy'
     },
+    {
+        state: 'calendario',
+        name: 'Calendario',
+        type: 'link',
+        icon: 'calendar_today'
+    },
     /*
     {
         state: 'material',
