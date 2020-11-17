@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   exports:[
@@ -23,7 +24,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatButtonModule,
     MatTableModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatToolbarModule
   ]
 })
 export class MaterialModule { }
