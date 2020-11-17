@@ -94,7 +94,7 @@ export class CalendarioComponent implements OnInit {
     {
       start: new Date('2020-11-03T06:00:00.000Z'),
       end: new Date('2020-11-03T20:00:00.000Z'),
-      title: 'Dia de inscripciones',
+      title: 'Día de inscripciones',
       color: colors.orange,
     },
     {

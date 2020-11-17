@@ -11,6 +11,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   exports:[
@@ -25,7 +26,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatTableModule,
     MatDialogModule,
     MatTooltipModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDatepickerModule
   ]
 })
 export class MaterialModule { }
