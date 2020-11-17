@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import { Response } from '../../../models/response';
 import { Colores } from '../enums/colores.enum';
@@ -52,6 +53,46 @@ export class EventoService {
   }
 
   listar(): Observable<Response<Evento[]>> {
-    return this.http.get<Response<Evento[]>>(apiUrl);
+    // return this.http.get<Response<Evento[]>>(apiUrl);
+    return of(
+      {
+        success: true,
+        message: '',
+        data: [
+          {
+            start: new Date('2020-11-03T06:00:00.000Z'),
+            end: new Date('2020-11-03T20:00:00.000Z'),
+            title: 'Día de inscripciones',
+            color: this.colorFactoryService.createColor(Colores.ORANGE)
+          },
+          {
+            start: new Date('2020-11-04T06:00:00.000Z'),
+            end: new Date('2020-11-04T20:00:00.000Z'),
+            title: 'Inicio de clases',
+            color: this.colorFactoryService.createColor(Colores.GREEN)
+          },
+          {
+            start: new Date('2020-11-18T06:00:00.000Z'),
+            end: new Date('2020-11-18T20:00:00.000Z'),
+            title: 'Examen Mid Term',
+            color: this.colorFactoryService.createColor(Colores.YELLOW)
+          },
+          {
+            start: new Date('2020-11-27T06:00:00.000Z'),
+            end: new Date('2020-11-27T20:00:00.000Z'),
+            title: 'Examen Final',
+            color: this.colorFactoryService.createColor(Colores.RED)
+          },
+          {
+            start: new Date('2020-11-30T06:00:00.000Z'),
+            end: new Date('2020-11-30T20:00:00.000Z'),
+            title: 'Entrega de notas',
+            color: this.colorFactoryService.createColor(Colores.BLUE)
+          }
+        ]
+      }
+    ).pipe(
+      delay(1000)
+    );
   }
 }

@@ -19,29 +19,7 @@ import {
   DAYS_OF_WEEK,
 } from 'angular-calendar';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
-
-const colors: any = {
-  red: {
-    primary: '#fc4b6c',
-    secondary: '#f9e7eb'
-  },
-  blue: {
-    primary: '#1e88e5',
-    secondary: '#D1E8FF'
-  },
-  yellow: {
-    primary: '#FFFF00',
-    secondary: '#F3F781'
-  },
-  green: {
-    primary: '#04b404',
-    secondary: '#58FA58'
-  },
-  orange: {
-    primary: '#FF8000',
-    secondary: '#FAAC58'
-  },
-};
+import { EventoService } from '../services/evento.service';
 
 @Component({
   selector: 'app-calendario',
@@ -51,8 +29,8 @@ const colors: any = {
 export class CalendarioComponent implements OnInit {
 
   // dialogRef: MatDialogRef<CalendarDialogComponent>;
-  weekStartsOn: number = DAYS_OF_WEEK.MONDAY;
   dialogRef: MatDialogRef<any>;
+  weekStartsOn: number = DAYS_OF_WEEK.MONDAY;
   lastCloseResult: string;
   config: MatDialogConfig = {
     disableClose: false,
@@ -89,76 +67,27 @@ export class CalendarioComponent implements OnInit {
       }
     }
   ];
+  isLoadingsEvents: boolean = false;
 
-  events: CalendarEvent[] = [
-    {
-      start: new Date('2020-11-03T06:00:00.000Z'),
-      end: new Date('2020-11-03T20:00:00.000Z'),
-      title: 'Día de inscripciones',
-      color: colors.orange,
-    },
-    {
-      start: new Date('2020-11-04T06:00:00.000Z'),
-      end: new Date('2020-11-04T20:00:00.000Z'),
-      title: 'Inicio de clases',
-      color: colors.green,
-    },
-    {
-      start: new Date('2020-11-18T06:00:00.000Z'),
-      end: new Date('2020-11-18T20:00:00.000Z'),
-      title: 'Examen Mid Term',
-      color: colors.yellow,
-    },
-    {
-      start: new Date('2020-11-27T06:00:00.000Z'),
-      end: new Date('2020-11-27T20:00:00.000Z'),
-      title: 'Examen Final',
-      color: colors.red,
-    },
-    {
-      start: new Date('2020-11-30T06:00:00.000Z'),
-      end: new Date('2020-11-30T20:00:00.000Z'),
-      title: 'Entrega de notas',
-      color: colors.blue,
-    },
-    /*
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.blue,
-      actions: this.actions
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: new Date(),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
-    }
-    */
-  ];
+  events: CalendarEvent[] = [];
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    private eventoService: EventoService) { }
 
   ngOnInit(): void {
+    this.cargarEventos();
+  }
+
+  cargarEventos(): void {
+    this.isLoadingsEvents = true;
+    this.eventoService.listar()
+      .subscribe(
+        (response) => {
+          response.data.forEach((e) => this.events.push((e as CalendarEvent)));
+          this.isLoadingsEvents = false;
+        }
+      );
   }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {

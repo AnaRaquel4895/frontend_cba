@@ -1,7 +1,7 @@
 import { Color } from './color';
 
 export interface Evento {
-  id: number;
+  id?: number;
   start: Date;
   end?: Date;
   title: string;
