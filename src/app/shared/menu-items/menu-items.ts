@@ -162,6 +162,17 @@ const MENUITEMS = [
             { state: 'crear-form', name: 'Nueva Gestion', type: 'link' }
         ]
     },
+    {
+        state: 'calendario',
+        name: 'Eventos',
+        type: 'sub',
+        icon: 'bubble_chart',
+        badge: [],
+        children: [
+            { state: 'lista', name: 'Lista de Eventos', type: 'link' },
+            { state: 'crear-form', name: 'Nueva Evento', type: 'link' }
+        ]
+    },
     /**
     {
         state: 'material',

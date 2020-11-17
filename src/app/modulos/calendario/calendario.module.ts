@@ -10,20 +10,24 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import localeEs from '@angular/common/locales/es';
+import { EventoCrearFormComponent } from './evento-crear-form/evento-crear-form.component';
+import { EventoListaComponent } from './evento-lista/evento-lista.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(localeEs);
 
 @NgModule({
-  declarations: [CalendarioComponent],
+  declarations: [CalendarioComponent, EventoCrearFormComponent, EventoListaComponent],
   imports: [
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
+    ReactiveFormsModule,
     // CalendarioRoutingModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
-  }),
+    }),
     RouterModule.forChild([
       {
         path: '',
@@ -38,6 +42,28 @@ registerLocaleData(localeEs);
           urls: [
             { title: 'Dashboard', url: '/dashboard' },
             { title: 'Calendario' }
+          ]
+        }
+      },
+      {
+        path: 'lista',
+        component: EventoListaComponent,
+        data: {
+          title: 'Lista de eventos',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Lista de eventos' }
+          ]
+        }
+      },
+      {
+        path: 'crear-form',
+        component: EventoCrearFormComponent,
+        data: {
+          title: 'Crear Evento',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Crear Evento' }
           ]
         }
       }
