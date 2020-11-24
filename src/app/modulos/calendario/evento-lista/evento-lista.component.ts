@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventoService } from '../services/evento.service';
 
 @Component({
   selector: 'app-evento-lista',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventoListaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private eventoService: EventoService) { }
 
   ngOnInit(): void {
+    this.eventoService.listar()
+      .subscribe((response) => {
+      });
   }
 
 }

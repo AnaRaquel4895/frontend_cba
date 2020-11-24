@@ -21,10 +21,10 @@ export class EventoCrearFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private cursoService: CursoService,
+    private eventoService: EventoService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private eventoService: EventoService) {
+  ) {
     this.initializeForms();
   }
 
@@ -42,12 +42,14 @@ export class EventoCrearFormComponent implements OnInit {
   }
 
   private fillForm(id: number): void {
-    this.cursoService.recuperar(id)
+    /*
+    this.eventoService.recuperar(id)
       .subscribe((response) => {
         this.form.setValue(response.data);
 
         this.editMode = true;
       });
+      */
   }
 
   /**
@@ -78,10 +80,20 @@ export class EventoCrearFormComponent implements OnInit {
   }
 
   crear(): void {
-    console.log('DATA TO CREATE EVENTO: ', this.form.value);
+    this.eventoService.crear(this.form.value)
+      .subscribe(
+        (response) => {
+          this.router.navigate(['/calendario/lista']);
+        }
+      );
+  }
 
+  editar(): void {
+    const id: number = Number(this.form.get('id').value);
+    const data: object = this.form.value;
+    delete data['id'];
     /*
-    this.cursoService.crear(this.form.value)
+    this.eventoService.editar(id, data)
       .subscribe(
         (response) => {
           this.router.navigate(['/cursos/lista']);
@@ -90,20 +102,8 @@ export class EventoCrearFormComponent implements OnInit {
     */
   }
 
-  editar(): void {
-    const id: number = Number(this.form.get('id').value);
-    const data: object = this.form.value;
-    delete data['id'];
-    this.cursoService.editar(id, data)
-      .subscribe(
-        (response) => {
-          this.router.navigate(['/cursos/lista']);
-        }
-      );
-  }
-
   get start(): FormControl {
     return this.form.get('start') as FormControl;
   }
- 
+
 }

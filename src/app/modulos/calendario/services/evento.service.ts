@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import { Response } from '../../../models/response';
 import { Colores } from '../enums/colores.enum';
@@ -49,12 +49,26 @@ export class EventoService {
   }
 
   crear(data: object): Observable<Response<Evento>> {
-    return this.http.post<Response<Evento>>(apiUrl, data);
+    data['color'] = JSON.stringify(data['color']);
+    return this.http.post<Response<Evento>>(apiUrl, data)
+      .pipe(map(response => {
+        response.data.color = JSON.parse(response.data.color as string);
+        return response;
+      }));
   }
 
   listar(): Observable<Response<Evento[]>> {
-    // return this.http.get<Response<Evento[]>>(apiUrl);
-    return of(
+    return this.http.get<Response<Evento[]>>(apiUrl)
+      .pipe(map(response => {
+        response.data = response.data.map(e => {
+          e.color = JSON.parse(e.color as string);
+          e.start = new Date(e.start);
+          return e;
+        });
+        return response;
+      }));
+
+    of(
       {
         success: true,
         message: '',
