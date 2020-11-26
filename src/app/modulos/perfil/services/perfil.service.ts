@@ -21,4 +21,12 @@ export class PerfilService {
   savePerfil(data: object): Observable<Response<any>> {
     return this.http.post<Response<any>>(`${apiUrl}`, data);
   }
+
+  recuperar(id: number): Observable<Response<Perfil>> {
+    return this.http.get<Response<Perfil>>(`${apiUrl}/${id}`);
+  }
+
+  editar(id: number, data: object): Observable<Response<Perfil>> {
+    return this.http.put<Response<Perfil>>(`${apiUrl}/${id}`, data);
+  }
 }

@@ -18,6 +18,17 @@ import { UsuarioListaComponent } from './usuario-lista/usuario-lista.component';
     // UsuarioRoutingModule,
     RouterModule.forChild([
       {
+        path: 'lista',
+        component: UsuarioListaComponent,
+        data: {
+          title: 'Lista de Usuarios',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Lista de Usuarios' }
+          ]
+        }
+      },
+      {
         path: 'crear-form',
         component: UsuarioCrearFormComponent,
         data: {
@@ -25,6 +36,17 @@ import { UsuarioListaComponent } from './usuario-lista/usuario-lista.component';
           urls: [
             { title: 'Dashboard', url: '/dashboard' },
             { title: 'Registrar Usuario' }
+          ]
+        }
+      },
+      {
+        path: 'editar-form/:id',
+        component: UsuarioCrearFormComponent,
+        data: {
+          title: 'Editar Usuario',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Editar Usuario' }
           ]
         }
       }

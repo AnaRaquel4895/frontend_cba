@@ -5,7 +5,7 @@
   <div fxFlex.gt-sm="100" fxFlex="100">
     <mat-card>
       <mat-card-content>
-        <mat-card-title>REGISTRAR USUARIO</mat-card-title>
+        <mat-card-title>{{ editMode ? tituloEditar : tituloCrear }}</mat-card-title>
         <!-- ============================================================== -->
         <!-- column -->
         <!-- ============================================================== -->
@@ -42,7 +42,7 @@
               </mat-form-field>
             </div>
             <!-- column -->
-            <div fxFlex.gt-sm="100" fxFlex="100">
+            <div fxFlex.gt-sm="100" fxFlex="100" *ngIf="!editMode">
               <mat-form-field>
                 <mat-select formControlName="role_id" placeholder="TIPO DE USUARIO">
                   <mat-option *ngFor="let role of rolesLista" [value]="role.id">{{role.name}}</mat-option>
@@ -51,27 +51,29 @@
             </div>
             <!-- Data to register a user -->
             <!-- column -->
-            <div fxFlex.gt-md="100" fxFlex="100">
+            <div fxFlex.gt-md="100" fxFlex="100" *ngIf="!editMode">
               <mat-form-field>
                 <input matInput formControlName="name" placeholder="NOMBRE DE USUARIO">
               </mat-form-field>
             </div>
             <!-- column -->
-            <div fxFlex.gt-md="100" fxFlex="100">
+            <div fxFlex.gt-md="100" fxFlex="100" *ngIf="!editMode">
               <mat-form-field>
                 <input matInput formControlName="email" placeholder="CORREO ELECTRONICO">
               </mat-form-field>
             </div>
             <!-- column -->
-            <div fxFlex.gt-md="100" fxFlex="100">
+            <div fxFlex.gt-md="100" fxFlex="100" *ngIf="!editMode">
               <mat-form-field>
                 <input matInput formControlName="password" placeholder="CONTRASEÑA" type='password'>
               </mat-form-field>
-            </div>
-            <!-------------------------------------------------------------------->
-            <!-- column -->
-            <div fxFlex.gt-sm="100" fxFlex="100">
-              <button mat-raised-button type="button" (click)="saveUsuario()" color="primary">ACEPTAR</button>
+            </div> 
+             <!-- column -->
+             <div fxFlex.gt-sm="100" fxFlex="100">
+              <button mat-raised-button *ngIf="!editMode" type="button" (click)="saveUsuario()"
+                color="primary">ACEPTAR</button>
+              <button mat-raised-button *ngIf="editMode" type="button" (click)="editUsuario()"
+                color="primary">ACEPTAR</button>
             </div>
           </div>
         </form>

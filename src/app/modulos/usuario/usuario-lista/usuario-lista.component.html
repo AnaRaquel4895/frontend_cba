@@ -1,1 +1,71 @@
-<p>usuario-lista works!</p>
+<div fxLayout="row wrap">
+  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>Lista de {{ title }}</mat-card-title>
+        <div fxLayout="row wrap">
+          <div fxFlex.gt-sm="100" fxFlex="100">
+            <button mat-raised-button type="button" color="primary"
+            (click)="recargarLista(roleEnum.NINGUNO)">Todos</button>
+            <button mat-raised-button type="button" color="primary"
+              (click)="recargarLista(roleEnum.PROFESORES)">Profesores</button>
+            <button mat-raised-button type="button" color="primary"
+              (click)="recargarLista(roleEnum.ESTUDIANTES)">Estudiantes</button>
+            <button mat-raised-button type="button" color="primary"
+              (click)="recargarLista(roleEnum.ADMINISTRATIVOS)">Administrativos</button>
+       
+          </div>
+        </div>
+
+        <div class="responsive-table">
+          <mat-table #table [dataSource]="dataSource">
+
+            <!-- Column -->
+            <ng-container matColumnDef="nombres">
+              <mat-header-cell *matHeaderCellDef> Nombres </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Nombres:</span>
+                {{ element.nombres }}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Column -->
+            <ng-container matColumnDef="apellido_paterno">
+              <mat-header-cell *matHeaderCellDef> Apellido Paterno </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Apellido Paterno:</span>
+                {{ element.apellido_paterno }}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Column -->
+            <ng-container matColumnDef="apellido_materno">
+              <mat-header-cell *matHeaderCellDef> Apellido Materno </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Apellido Materno:</span>
+                {{ element.apellido_materno }}
+              </mat-cell>
+            </ng-container>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="opciones">
+              <mat-header-cell *matHeaderCellDef> Opciones </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="header-label">Opciones:</span>
+                <button mat-icon-button (click)="editar(element.id)" color="primary">
+                  <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="eliminar()" color="primary">
+                  <mat-icon aria-label="Example icon-button with a heart icon">delete_forever</mat-icon>
+                </button>
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

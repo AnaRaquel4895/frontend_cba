@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { RoleEnum } from '../../modulos/auth/enums/role.enum';
 
 export interface BadgeItem {
     type: string;
@@ -78,6 +79,7 @@ const MENUITEMS = [
         badge: [],
         children: [
             { state: 'crear-form', name: 'Registrar Usuarios', type: 'link' },
+            { state: 'lista', name: 'Lista de Usuarios', type: 'link' },
         ]
     },
     {
