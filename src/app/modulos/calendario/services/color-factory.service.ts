@@ -32,9 +32,34 @@ export class ColorFactoryService {
           secondary: '#F3F781'
         };
       case Colores.ORANGE:
-        return  {
+        return {
           primary: '#FF8000',
           secondary: '#FAAC58'
+        };
+      case Colores.PURPLE:
+        return {
+          primary: '#4A235A',
+          secondary: '#A569BD'
+        };
+      case Colores.GRAY:
+        return {
+          primary: '#212F3C',
+          secondary: '#85929E'
+        };
+      case Colores.GRAY:
+        return {
+          primary: '#212F3C',
+          secondary: '#85929E'
+        };
+      case Colores.BROWN:
+        return {
+          primary: '#6E2C00',
+          secondary: '#EDBB99'
+        };
+      case Colores.BLACK:
+        return {
+          primary: '#17202A',
+          secondary: '#808B96'
         };
       default:
         return undefined;

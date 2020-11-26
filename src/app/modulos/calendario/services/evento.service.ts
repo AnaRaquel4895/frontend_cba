@@ -31,7 +31,7 @@ export class EventoService {
         start: new Date()
       },
       {
-        title: 'Examen Mid Term',
+        title: 'Examen Midterm',
         color: this.colorFactoryService.createColor(Colores.YELLOW),
         start: new Date()
       },
@@ -43,6 +43,26 @@ export class EventoService {
       {
         title: 'Entrega de notas',
         color: this.colorFactoryService.createColor(Colores.BLUE),
+        start: new Date()
+      },
+      {
+        title: 'TOEFL iBT',
+        color: this.colorFactoryService.createColor(Colores.PURPLE),
+        start: new Date()
+      },
+      {
+        title: 'Achievement Test',
+        color: this.colorFactoryService.createColor(Colores.GRAY),
+        start: new Date()
+      },
+      {
+        title: 'Examen de Egreso',
+        color: this.colorFactoryService.createColor(Colores.BROWN),
+        start: new Date()
+      },
+      {
+        title: 'Otro',
+        color: this.colorFactoryService.createColor(Colores.BROWN),
         start: new Date()
       },
     ]);
@@ -67,46 +87,14 @@ export class EventoService {
         });
         return response;
       }));
+  }
 
-    of(
-      {
-        success: true,
-        message: '',
-        data: [
-          {
-            start: new Date('2020-11-03T06:00:00.000Z'),
-            end: new Date('2020-11-03T20:00:00.000Z'),
-            title: 'Día de inscripciones',
-            color: this.colorFactoryService.createColor(Colores.ORANGE)
-          },
-          {
-            start: new Date('2020-11-04T06:00:00.000Z'),
-            end: new Date('2020-11-04T20:00:00.000Z'),
-            title: 'Inicio de clases',
-            color: this.colorFactoryService.createColor(Colores.GREEN)
-          },
-          {
-            start: new Date('2020-11-18T06:00:00.000Z'),
-            end: new Date('2020-11-18T20:00:00.000Z'),
-            title: 'Examen Mid Term',
-            color: this.colorFactoryService.createColor(Colores.YELLOW)
-          },
-          {
-            start: new Date('2020-11-27T06:00:00.000Z'),
-            end: new Date('2020-11-27T20:00:00.000Z'),
-            title: 'Examen Final',
-            color: this.colorFactoryService.createColor(Colores.RED)
-          },
-          {
-            start: new Date('2020-11-30T06:00:00.000Z'),
-            end: new Date('2020-11-30T20:00:00.000Z'),
-            title: 'Entrega de notas',
-            color: this.colorFactoryService.createColor(Colores.BLUE)
-          }
-        ]
-      }
-    ).pipe(
-      delay(1000)
-    );
+  recuperar(id: number): Observable<Response<Evento>> {
+    return this.http.get<Response<Evento>>(`${apiUrl}/${id}`)
+      .pipe(map(response => {
+        response.data.color = JSON.parse(response.data.color as string);
+        response.data.start = new Date(response.data.start);
+        return response;
+      }));
   }
 }

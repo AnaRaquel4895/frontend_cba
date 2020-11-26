@@ -41,29 +41,14 @@ export class EventoCrearFormComponent implements OnInit {
       .subscribe((lista) => this.eventosPorDefecto = lista);
   }
 
-  private fillForm(id: number): void {
-    /*
-    this.eventoService.recuperar(id)
-      .subscribe((response) => {
-        this.form.setValue(response.data);
 
-        this.editMode = true;
-      });
-      */
-  }
-
-  /**
-      start: new Date('2020-11-03T06:00:00.000Z'),
-      end: new Date('2020-11-03T20:00:00.000Z'),
-      title: 'Día de inscripciones',
-      color: colors.orange, 
-  */
 
   private initializeForms(): void {
     this.form = this.fb.group({
       id: [undefined],
       title: [undefined, [Validators.required]],
       start: [undefined, [Validators.required]],
+      end: [undefined],
       color: [undefined, [Validators.required]]
     });
 
@@ -72,11 +57,39 @@ export class EventoCrearFormComponent implements OnInit {
     this.controlEvento.valueChanges
       .subscribe((value) => {
         if (value) {
+          console.log('VALUE CHANGE DETECTED: ', value);
+
           this.form.get('title').setValue(value.title);
           this.form.get('start').setValue(value.start);
           this.form.get('color').setValue(value.color);
         }
       });
+  }
+
+  private fillForm(id: number): void {
+
+    this.eventoService.recuperar(id)
+      .subscribe((response) => {
+        console.log('>>>>> recuperar por id: ', response.data);
+
+        this.form.get('title').setValue(response.data.title);
+        this.form.get('start').setValue(response.data.start);
+        this.controlEvento.setValue({
+          title: response.data.title,
+          color: response.data.color,
+          start: response.data.start
+        });
+        // this.form.get('color').setValue(response.data.color);
+        // this.form.setValue(response.data);
+
+        this.editMode = true;
+      },
+        error => {
+          console.log('>>>>>> Error: ', error);
+
+        }
+      );
+
   }
 
   crear(): void {
@@ -92,6 +105,8 @@ export class EventoCrearFormComponent implements OnInit {
     const id: number = Number(this.form.get('id').value);
     const data: object = this.form.value;
     delete data['id'];
+    console.log('>>> Data before to edit: ', data, ' id: ', id);
+
     /*
     this.eventoService.editar(id, data)
       .subscribe(

@@ -66,6 +66,17 @@ registerLocaleData(localeEs);
             { title: 'Crear Evento' }
           ]
         }
+      },
+      {
+        path: 'editar-form/:id',
+        component: EventoCrearFormComponent,
+        data: {
+          title: 'Editar Evento',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Crear Evento' }
+          ]
+        }
       }
     ]),
   ]
