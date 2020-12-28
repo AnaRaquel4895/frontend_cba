@@ -25,7 +25,14 @@
             <!-- column -->
             <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
               <mat-form-field>
-                <input formControlName="start" matInput [matDatepicker]="picker" placeholder="Fecha de inicio del Evento">
+                <input matInput formControlName="title" placeholder="NOMBRE" [readonly]="readonlyControl">
+              </mat-form-field>
+            </div>
+            <!-- column -->
+            <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+              <mat-form-field>
+                <input formControlName="start" matInput [matDatepicker]="picker"
+                  placeholder="Fecha de inicio del Evento">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>

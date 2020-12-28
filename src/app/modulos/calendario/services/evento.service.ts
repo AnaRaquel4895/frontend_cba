@@ -77,6 +77,10 @@ export class EventoService {
       }));
   }
 
+  editar(id: number, data: object): Observable<Response<Evento>> {
+    return this.http.put<Response<Evento>>(`${apiUrl}/${id}`, data);
+  }
+
   listar(): Observable<Response<Evento[]>> {
     return this.http.get<Response<Evento[]>>(apiUrl)
       .pipe(map(response => {
@@ -97,4 +101,6 @@ export class EventoService {
         return response;
       }));
   }
+
+
 }

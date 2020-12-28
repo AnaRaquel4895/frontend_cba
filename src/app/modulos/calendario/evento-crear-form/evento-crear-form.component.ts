@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CursoService } from '../../curso/services/curso.service';
 import { EventoService } from '../services/evento.service';
 
 @Component({
@@ -41,8 +40,7 @@ export class EventoCrearFormComponent implements OnInit {
       .subscribe((lista) => this.eventosPorDefecto = lista);
   }
 
-
-
+  readonlyControl;
   private initializeForms(): void {
     this.form = this.fb.group({
       id: [undefined],
@@ -56,10 +54,17 @@ export class EventoCrearFormComponent implements OnInit {
 
     this.controlEvento.valueChanges
       .subscribe((value) => {
-        if (value) {
-          console.log('VALUE CHANGE DETECTED: ', value);
+        const arrayaux = this.eventosPorDefecto.filter(e => e.title !== 'Otro');
+        this.readonlyControl = arrayaux.find(e => e.title == value.title);
+        this.readonlyControl = !!this.readonlyControl;
 
-          this.form.get('title').setValue(value.title);
+        if (value) {
+          if (value.title === 'Otro') {
+            this.form.get('title').setValue('');
+          }
+          else {
+            this.form.get('title').setValue(value.title);
+          }
           this.form.get('start').setValue(value.start);
           this.form.get('color').setValue(value.color);
         }
@@ -67,11 +72,9 @@ export class EventoCrearFormComponent implements OnInit {
   }
 
   private fillForm(id: number): void {
-
     this.eventoService.recuperar(id)
       .subscribe((response) => {
-        console.log('>>>>> recuperar por id: ', response.data);
-
+        this.form.get('id').setValue(response.data.id);
         this.form.get('title').setValue(response.data.title);
         this.form.get('start').setValue(response.data.start);
         this.controlEvento.setValue({
@@ -79,14 +82,10 @@ export class EventoCrearFormComponent implements OnInit {
           color: response.data.color,
           start: response.data.start
         });
-        // this.form.get('color').setValue(response.data.color);
-        // this.form.setValue(response.data);
-
         this.editMode = true;
       },
         error => {
           console.log('>>>>>> Error: ', error);
-
         }
       );
 
@@ -105,16 +104,13 @@ export class EventoCrearFormComponent implements OnInit {
     const id: number = Number(this.form.get('id').value);
     const data: object = this.form.value;
     delete data['id'];
-    console.log('>>> Data before to edit: ', data, ' id: ', id);
-
-    /*
     this.eventoService.editar(id, data)
       .subscribe(
         (response) => {
-          this.router.navigate(['/cursos/lista']);
+          this.router.navigate(['/calendario/lista']);
         }
       );
-    */
+
   }
 
   get start(): FormControl {
