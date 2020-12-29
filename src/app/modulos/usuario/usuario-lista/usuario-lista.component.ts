@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Perfil } from '../../perfil/models/perfil';
 import { PerfilService } from '../../perfil/services/perfil.service';
 import { RoleEnum } from '../../auth/enums/role.enum';
-import { switchMap } from 'rxjs/operators';
 
 
 @Component({
@@ -79,7 +78,16 @@ export class UsuarioListaComponent implements OnInit {
   }
 
   eliminar(id: number): void {
-
+    this.perfilService.eliminar(id)
+      .subscribe(
+        (response) => {
+          const newDataSource = this.dataSource.data.filter((e) => e.id != id);
+          this.dataSource = new MatTableDataSource<Perfil>(newDataSource);
+        },
+        (error) => {
+          console.log('ERROR AL ELIMINAR EL PERFIL DEL USUARIO: ', error);
+        },
+      );
   }
 
 }

@@ -29,4 +29,8 @@ export class PerfilService {
   editar(id: number, data: object): Observable<Response<Perfil>> {
     return this.http.put<Response<Perfil>>(`${apiUrl}/${id}`, data);
   }
+
+  eliminar(id: number): Observable<Response<Perfil>> {
+    return this.http.delete<Response<Perfil>>(`${apiUrl}/${id}`);
+  }
 }
