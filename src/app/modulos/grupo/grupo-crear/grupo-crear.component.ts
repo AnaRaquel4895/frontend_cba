@@ -16,6 +16,8 @@ import { RoleEnum } from '../../auth/enums/role.enum';
 import { Router } from '@angular/router';
 import { GrupoService } from '../services/grupo.service';
 
+
+
 @Component({
   selector: 'app-grupo-crear',
   templateUrl: './grupo-crear.component.html',
@@ -29,6 +31,7 @@ export class GrupoCrearComponent implements OnInit {
   horarioLista: Horario[] = [];
   gestionLista: Gestion[] = [];
   perfilLista: Perfil[] = [];
+  periodos = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
   form: FormGroup;
 
@@ -76,6 +79,7 @@ export class GrupoCrearComponent implements OnInit {
       nivel_id: [undefined, []],
       horario_id: [undefined, []],
       gestion_id: [undefined, []],
+      periodo: [undefined, []]
     });
   }
 

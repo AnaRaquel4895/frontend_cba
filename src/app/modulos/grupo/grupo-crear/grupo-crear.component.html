@@ -3,9 +3,7 @@
     <mat-card>
       <mat-card-content>
         <mat-card-title>Crear Grupo</mat-card-title>
-        <!-- ============================================================== -->
         <!-- column -->
-        <!-- ============================================================== -->
         <form [formGroup]="form" class="basic-form">
           <div fxLayout="row wrap" fxFlexAlign="center" class="row">
             <!-- column -->
@@ -57,6 +55,16 @@
               <mat-form-field>
                 <mat-select formControlName="gestion_id" placeholder="GESTION">
                   <mat-option *ngFor="let gestion of gestionLista" [value]="gestion.id">{{ gestion.nombre }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <!-- column -->
+            <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+              <mat-form-field>
+                <mat-select formControlName="periodo" placeholder="PERIODO">
+                  <mat-option *ngFor="let periodo of periodos" [value]="periodo">
+                    {{ periodo }}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
