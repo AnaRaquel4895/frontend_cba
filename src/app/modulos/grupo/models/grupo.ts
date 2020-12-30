@@ -7,4 +7,5 @@ export interface Grupo {
   horario_id: number;
   gestion_id: number;
   numero?: number;
+  periodo: string;
 }

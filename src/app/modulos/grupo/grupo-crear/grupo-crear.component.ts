@@ -13,8 +13,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { PerfilService } from '../../perfil/services/perfil.service';
 import { Perfil } from '../../perfil/models/perfil';
 import { RoleEnum } from '../../auth/enums/role.enum';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GrupoService } from '../services/grupo.service';
+import { GrupoResourceList } from '../models/grupo-resource-list';
+import { Grupo } from '../models/grupo';
 
 
 
@@ -34,6 +36,9 @@ export class GrupoCrearComponent implements OnInit {
   periodos = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
   form: FormGroup;
+  editMode: boolean = false;
+  tituloCrear: String = 'Crear Grupo';
+  tituloEditar: String = 'Editar Grupo';
 
   constructor(
     private programaService: ProgramaService,
@@ -44,7 +49,8 @@ export class GrupoCrearComponent implements OnInit {
     private perfilService: PerfilService,
     private fb: FormBuilder,
     private grupoService: GrupoService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
     this.initializeForm();
   }
@@ -69,10 +75,42 @@ export class GrupoCrearComponent implements OnInit {
       .subscribe((resp) => {
         this.perfilLista = resp.data;
       });
+
+    this.activatedRoute.paramMap
+      .subscribe(
+        (params) => {
+          if (params.get('id') !== null) {
+            this.fillForm(Number(params.get('id')));
+          }
+        }
+      );
+  }
+
+  private fillForm(id: number): void {
+    this.grupoService.recuperar(id)
+      .subscribe((response) => {
+        this.form.setValue(this.cleanDataTofillForm(response.data));
+        this.editMode = true;
+      });
+  }
+
+  private cleanDataTofillForm(data: GrupoResourceList): Grupo {
+    return {
+      id: data.id,
+      perfil_usuario_id: data.perfil_usuario_id,
+      programa_id: data.programa_id,
+      curso_id: data.curso_id,
+      nivel_id: data.nivel_id,
+      horario_id: data.horario_id,
+      gestion_id: data.gestion_id,
+      periodo: data.periodo
+    };
+
   }
 
   private initializeForm(): void {
     this.form = this.fb.group({
+      id: [undefined, []],
       perfil_usuario_id: [undefined, []],
       programa_id: [undefined, []],
       curso_id: [undefined, []],
@@ -85,6 +123,18 @@ export class GrupoCrearComponent implements OnInit {
 
   crear(): void {
     this.grupoService.crear(this.form.value)
+      .subscribe(
+        (response) => {
+          this.router.navigate(['/grupos/lista']);
+        }
+      );
+  }
+
+  editar(): void {
+    const id: number = Number(this.form.get('id').value);
+    const data: object = this.form.value;
+    delete data['id'];
+    this.grupoService.editar(id, data)
       .subscribe(
         (response) => {
           this.router.navigate(['/grupos/lista']);

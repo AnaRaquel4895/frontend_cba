@@ -51,7 +51,7 @@
                   [routerLink]="['/grupos/lista-inscritos',element.id]">
                   <mat-icon aria-label="Example icon-button with a heart icon">list</mat-icon>
                 </button>
-                <button mat-icon-button matTooltip="Editar Grupo" color="primary">
+                <button mat-icon-button matTooltip="Editar Grupo" color="primary" (click)="editar(element.id)">
                   <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
                 </button>
               </mat-cell>

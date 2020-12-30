@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { GrupoService } from '../services/grupo.service';
 import { GrupoResourceList } from '../models/grupo-resource-list';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-grupo-lista',
@@ -16,7 +17,8 @@ export class GrupoListaComponent implements OnInit {
 
   constructor(
     breakpointObserver: BreakpointObserver,
-    public grupoService: GrupoService
+    public grupoService: GrupoService,
+    private router: Router
   ) {
     breakpointObserver.observe(['(max-width: 600px)']).subscribe(result => {
       this.displayedColumns = result.matches ?
@@ -32,6 +34,10 @@ export class GrupoListaComponent implements OnInit {
           this.dataSource = new MatTableDataSource<GrupoResourceList>(response.data);
         }
       );
+  }
+
+  editar(id: number): void {
+    this.router.navigate([`/grupos/editar-form/${id}`]);
   }
 
 }

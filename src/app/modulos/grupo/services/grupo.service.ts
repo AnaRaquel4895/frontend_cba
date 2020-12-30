@@ -24,4 +24,8 @@ export class GrupoService {
   recuperar(id: number): Observable<Response<GrupoResourceList>> {
     return this.http.get<Response<GrupoResourceList>>(`${apiUrl}/${id}`);
   }
+
+  editar(id: number, data: object): Observable<Response<Grupo>> {
+    return this.http.put<Response<Grupo>>(`${apiUrl}/${id}`, data);
+  }
 }

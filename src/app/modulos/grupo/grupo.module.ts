@@ -31,6 +31,17 @@ import { GrupoSelectInscripcionComponent } from './grupo-select-inscripcion/grup
         }
       },
       {
+        path: 'editar-form/:id',
+        component: GrupoCrearComponent,
+        data: {
+          title: 'Editar Grupo',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Editar Grupo' }
+          ]
+        }
+      },
+      {
         path: 'lista',
         component: GrupoListaComponent,
         data: {
