@@ -36,7 +36,7 @@
             <!-- column -->
             <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
               <mat-form-field>
-                <mat-select formControlName="nivel_id" placeholder="Nivel">
+                <mat-select formControlName="nivel_id" placeholder="NIVEL">
                   <mat-option *ngFor="let nivel of nivelLista" [value]="nivel.id">{{ nivel.nombre }}</mat-option>
                 </mat-select>
               </mat-form-field>
