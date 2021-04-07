@@ -175,6 +175,17 @@ const MENUITEMS = [
             { state: 'crear-form', name: 'Nueva Evento', type: 'link' }
         ]
     },
+    {
+        state: 'noticias',
+        name: 'Noticias',
+        type: 'sub',
+        icon: 'bubble_chart',
+        badge: [],
+        children: [
+            { state: 'lista', name: 'Lista de Noticias', type: 'link' },
+            { state: 'crear-form', name: 'Crear Noticia', type: 'link' }
+        ]
+    },
     /**
     {
         state: 'material',

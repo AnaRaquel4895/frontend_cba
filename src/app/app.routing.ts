@@ -60,6 +60,10 @@ export const AppRoutes: Routes = [
                 loadChildren: () => import('./modulos/calendario/calendario.module').then(m => m.CalendarioModule)
             },
             {
+                path: 'noticias',
+                loadChildren: () => import('./modulos/noticia/noticia.module').then(m => m.NoticiaModule)
+            },
+            {
                 path: 'icons',
                 loadChildren: () => import('./icons/mat-icon.module').then(m => m.IconsModule)
             }
