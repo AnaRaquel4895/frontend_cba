@@ -14,15 +14,22 @@
                     {{ perfil.nombres+' '+perfil.apellido_paterno+' '+perfil.apellido_materno }}
                   </mat-option>
                 </mat-select>
+                <mat-error *ngIf="perfil_usuario.hasError('required')">
+                  El campo Profesor es obligatorio
+                </mat-error>
               </mat-form-field>
             </div>
             <!-- column -->
             <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
               <mat-form-field>
                 <mat-select formControlName="programa_id" placeholder="PROGRAMA">
+                  
                   <mat-option *ngFor="let programa of programaLista" [value]="programa.id">{{ programa.nombre }}
                   </mat-option>
                 </mat-select>
+                <mat-error *ngIf="programa.hasError('required')">
+                  El campo Programa es obligatorio
+                </mat-error>
               </mat-form-field>
             </div>
             <!-- column -->
@@ -31,6 +38,9 @@
                 <mat-select formControlName="curso_id" placeholder="CURSO">
                   <mat-option *ngFor="let curso of cursoLista" [value]="curso.id">{{ curso.nombre }}</mat-option>
                 </mat-select>
+                <mat-error *ngIf="curso.hasError('required')">
+                  El campo Curso es obligatorio
+                </mat-error>
               </mat-form-field>
             </div>
             <!-- column -->
@@ -39,6 +49,9 @@
                 <mat-select formControlName="nivel_id" placeholder="NIVEL">
                   <mat-option *ngFor="let nivel of nivelLista" [value]="nivel.id">{{ nivel.nombre }}</mat-option>
                 </mat-select>
+                <mat-error *ngIf="nivel.hasError('required')">
+                  El campo Nivel es obligatorio
+                </mat-error>
               </mat-form-field>
             </div>
             <!-- column -->
@@ -48,6 +61,9 @@
                   <mat-option *ngFor="let horario of horarioLista" [value]="horario.id">{{ horario.nombre }}
                   </mat-option>
                 </mat-select>
+                <mat-error *ngIf="horario.hasError('required')">
+                  El campo Horario es obligatorio
+                </mat-error>
               </mat-form-field>
             </div>
             <!-- column -->
@@ -57,6 +73,9 @@
                   <mat-option *ngFor="let gestion of gestionLista" [value]="gestion.id">{{ gestion.nombre }}
                   </mat-option>
                 </mat-select>
+                <mat-error *ngIf="gestion.hasError('required')">
+                  El campo Gestion es obligatorio
+                </mat-error>
               </mat-form-field>
             </div>
             <!-- column -->
@@ -67,6 +86,9 @@
                     {{ periodo }}
                   </mat-option>
                 </mat-select>
+                <mat-error *ngIf="periodo.hasError('required')">
+                  El campo Periodo es obligatorio
+                </mat-error>
               </mat-form-field>
             </div>
             <!-- column -->

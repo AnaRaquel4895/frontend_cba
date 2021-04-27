@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { RoleService } from '../../auth/services/role.service';
 import { Role } from '../../auth/models/role';
 import { AuthService } from '../../auth/services/auth.service';
@@ -30,16 +30,16 @@ export class UsuarioCrearFormComponent implements OnInit {
   ) {
     this.usuarioForm = fb.group({
       id: [undefined],
-      nombres: [],
-      apellido_paterno: [],
+      nombres: ['',[Validators.required]],
+      apellido_paterno: ['',[Validators.required]],
       apellido_materno: [],
       carnet_identidad: [],
-      celular: [],
+      celular:['',[Validators.required]],
 
       role_id: [],
       name: [],
-      email: [undefined, [Validators.email]],
-      password: [],
+      email: [undefined, [Validators.email,Validators.required]],
+      password: ['',[Validators.required]],
     });
   }
 
@@ -109,5 +109,19 @@ export class UsuarioCrearFormComponent implements OnInit {
       );
 
   }
-
+get nombres(): FormControl{
+  return this.usuarioForm.get('nombres') as FormControl;
+}
+get apellido_paterno(): FormControl{
+  return this.usuarioForm.get('apellido_paterno') as FormControl;
+}
+get celular(): FormControl{
+  return this.usuarioForm.get('celular') as FormControl;
+}
+get email(): FormControl{
+  return this.usuarioForm.get('email') as FormControl;
+}
+get password(): FormControl{
+  return this.usuarioForm.get('password') as FormControl;
+}
 }

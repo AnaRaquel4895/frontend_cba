@@ -9,7 +9,7 @@ import { CursoService } from '../../curso/services/curso.service';
 import { GestionService } from '../../gestion/services/gestion.service';
 import { HorarioService } from '../../horario/services/horario.service';
 import { NivelService } from '../../nivel/services/nivel.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { PerfilService } from '../../perfil/services/perfil.service';
 import { Perfil } from '../../perfil/models/perfil';
 import { RoleEnum } from '../../auth/enums/role.enum';
@@ -110,14 +110,14 @@ export class GrupoCrearComponent implements OnInit {
 
   private initializeForm(): void {
     this.form = this.fb.group({
-      id: [undefined, []],
-      perfil_usuario_id: [undefined, []],
-      programa_id: [undefined, []],
-      curso_id: [undefined, []],
-      nivel_id: [undefined, []],
-      horario_id: [undefined, []],
-      gestion_id: [undefined, []],
-      periodo: [undefined, []]
+      id: [undefined],
+      perfil_usuario_id: ['', [Validators.required]],
+      programa_id: ['', [Validators.required]],
+      curso_id: ['', [Validators.required]],
+      nivel_id: ['', [Validators.required]],
+      horario_id: ['', [Validators.required]],
+      gestion_id: ['', [Validators.required]],
+      periodo: ['', [Validators.required]],
     });
   }
 
@@ -141,4 +141,27 @@ export class GrupoCrearComponent implements OnInit {
         }
       );
   }
+  get perfil_usuario(): FormControl {
+    return this.form.get('perfil_usuario_id') as FormControl;
+  }
+  get programa(): FormControl {
+    return this.form.get('programa_id') as FormControl;
+  }
+  get curso(): FormControl {
+    return this.form.get('curso_id') as FormControl;
+  }
+  get nivel(): FormControl {
+    return this.form.get('nivel_id') as FormControl;
+  }
+  get horario(): FormControl {
+    return this.form.get('horario_id') as FormControl;
+  }
+  get gestion(): FormControl {
+    return this.form.get('gestion_id') as FormControl;
+  }
+  get periodo(): FormControl {
+    return this.form.get('periodo') as FormControl;
+  }
 }
+
+

@@ -44,9 +44,9 @@ export class EventoCrearFormComponent implements OnInit {
   private initializeForms(): void {
     this.form = this.fb.group({
       id: [undefined],
-      title: [undefined, [Validators.required]],
-      start: [undefined, [Validators.required]],
-      end: [undefined],
+      title: ['', [Validators.required]],
+      start: ['', [Validators.required]],
+      end: ['', [Validators.required]],
       color: [undefined, [Validators.required]]
     });
 
@@ -112,9 +112,13 @@ export class EventoCrearFormComponent implements OnInit {
       );
 
   }
-
+  get title(): FormControl {
+    return this.form.get('title') as FormControl;
+  }
   get start(): FormControl {
     return this.form.get('start') as FormControl;
   }
-
+  get end(): FormControl {
+    return this.form.get('end') as FormControl;
+  }
 }

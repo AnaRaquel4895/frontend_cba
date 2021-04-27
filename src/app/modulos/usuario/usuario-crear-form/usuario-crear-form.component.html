@@ -15,12 +15,14 @@
             <div fxFlex.gt-md="100" fxFlex="100">
               <mat-form-field>
                 <input matInput formControlName="nombres" placeholder="NOMBRES">
+              <mat-error *ngIf="nombres.hasError('required')">Este campo es obligatorio</mat-error>
               </mat-form-field>
             </div>
             <!-- column -->
             <div fxFlex.gt-md="100" fxFlex="100">
               <mat-form-field>
                 <input matInput formControlName="apellido_paterno" placeholder="APELLIDO PATERNO">
+                <mat-error *ngIf="apellido_paterno.hasError('required')">Este campo es obligatorio</mat-error>
               </mat-form-field>
             </div>
             <!-- column -->
@@ -33,12 +35,14 @@
             <div fxFlex.gt-md="100" fxFlex="100">
               <mat-form-field>
                 <input matInput formControlName="carnet_identidad" placeholder="CARNET DE IDENTIDAD">
+  
               </mat-form-field>
             </div>
             <!-- column -->
             <div fxFlex.gt-md="100" fxFlex="100">
               <mat-form-field>
                 <input matInput formControlName="celular" placeholder="CELULAR">
+                <mat-error *ngIf="celular.hasError('required')">Este campo es obligatorio</mat-error>
               </mat-form-field>
             </div>
             <!-- column -->
@@ -60,12 +64,14 @@
             <div fxFlex.gt-md="100" fxFlex="100" *ngIf="!editMode">
               <mat-form-field>
                 <input matInput formControlName="email" placeholder="CORREO ELECTRONICO">
+                <mat-error *ngIf="email.hasError('required')">Este campo es obligatorio</mat-error>
               </mat-form-field>
             </div>
             <!-- column -->
             <div fxFlex.gt-md="100" fxFlex="100" *ngIf="!editMode">
               <mat-form-field>
                 <input matInput formControlName="password" placeholder="CONTRASEÑA" type='password'>
+                <mat-error *ngIf="password.hasError('required')">Este campo es obligatorio</mat-error>
               </mat-form-field>
             </div> 
              <!-- column -->

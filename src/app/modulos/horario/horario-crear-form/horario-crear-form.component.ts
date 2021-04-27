@@ -48,7 +48,7 @@ export class HorarioCrearFormComponent implements OnInit {
     this.form = this.fb.group({
       id: [undefined],
       nombre: ['', [Validators.required]],
-      descripcion: [undefined, []]
+      descripcion:[undefined, []]
     });
   }
 
@@ -75,10 +75,6 @@ export class HorarioCrearFormComponent implements OnInit {
 
   get nombre(): FormControl {
     return this.form.get('nombre') as FormControl;
-  }
-
-  get descripcion(): FormControl {
-    return this.form.get('descripcion') as FormControl;
   }
 
 }
