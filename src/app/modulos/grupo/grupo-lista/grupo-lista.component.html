@@ -2,7 +2,35 @@
   <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
     <mat-card>
       <mat-card-content>
-        <mat-card-title>Lista de grupos</mat-card-title>
+        <mat-card-title>Lista de grupos<h1></h1></mat-card-title>
+        <div class="basic-form">
+          <div fxLayout="row wrap" fxFlexAlign="center" class="row">            
+            <!-- column -->
+            <div fxFlex.gt-sm="35" fxFlex="100" class="p-10">
+              <mat-form-field>
+                <mat-select placeholder="PERIODO">
+                  <mat-option *ngFor="let perfil of []" [value]="perfil.id">
+                    sssss
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <!-- column -->
+            <div fxFlex.gt-sm="35" fxFlex="100" class="p-10">
+              <mat-form-field>
+                <mat-select placeholder="GESTION">
+                  <mat-option *ngFor="let perfil of []" [value]="perfil.id">
+                    sssss
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <!-- column -->
+            <div fxFlex.gt-sm="30" fxFlex="100" class="p-10">
+              <button mat-raised-button  type="button" color="primary" style="width: 100%;">FILTRAR</button>
+            </div>
+          </div>
+        </div>
         <div class="responsive-table">
           <mat-table #table [dataSource]="dataSource">
 

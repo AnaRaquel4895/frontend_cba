@@ -5,13 +5,19 @@ import { RouterModule } from '@angular/router';
 import { NoticiaRoutingModule } from './noticia-routing.module';
 import { NoticiaCrearFormComponent } from './noticia-crear-form/noticia-crear-form.component';
 import { NoticiaListaComponent } from './noticia-lista/noticia-lista.component';
+import { MaterialModule } from '../../material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [NoticiaCrearFormComponent, NoticiaListaComponent],
   imports: [
     CommonModule,
-    // NoticiaRoutingModule
+    MaterialModule,
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    // NoticiaRoutingModule    
     RouterModule.forChild([
       {
         path: 'lista',
@@ -46,7 +52,9 @@ import { NoticiaListaComponent } from './noticia-lista/noticia-lista.component';
           ]
         }
       }
-    ])
+    ]),
+    MaterialModule,
+    FlexLayoutModule,
   ]
 })
 export class NoticiaModule { }

@@ -13,3 +13,8 @@
 .mat-row:hover {
   background-color: #F8F9F9;
 }
+
+.container {
+  display: flex; /* or inline-flex */
+  flex-direction: row;
+}

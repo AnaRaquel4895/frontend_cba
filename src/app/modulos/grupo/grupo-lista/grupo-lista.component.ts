@@ -32,6 +32,12 @@ export class GrupoListaComponent implements OnInit {
       .subscribe(
         (response) => {
           this.dataSource = new MatTableDataSource<GrupoResourceList>(response.data);
+          console.log(response.data.map(e=>{
+            return e.gestion_nombre;
+          }));  
+          console.log(response.data.map(e=>{
+            return e.periodo;
+          }));        
         }
       );
   }

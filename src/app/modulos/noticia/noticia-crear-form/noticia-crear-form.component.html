@@ -1,1 +1,48 @@
-<p>noticia-crear-form works!</p>
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex="100">
+      <mat-card>
+        <mat-card-content>
+          <mat-card-title>{{ editMode ? tituloEditar : tituloCrear }}</mat-card-title>        
+          <!-- ============================================================== -->
+          <form [formGroup]="form" class="basic-form">
+            <div fxLayout="row wrap" fxFlexAlign="center" class="row">
+               <!-- column -->
+               <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                <mat-form-field>
+                  <input formControlName="fecha" matInput [matDatepicker]="picker"
+                    placeholder="FECHA">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <!-- column -->
+              <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                <mat-form-field>
+                  <input matInput formControlName="titulo" placeholder="TITULO">
+                </mat-form-field>
+              </div>
+              <!-- column -->
+              <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                <mat-form-field>
+                  <textarea matInput formControlName="descripcion" rows="5" placeholder="DESCRIPCION"></textarea>
+                </mat-form-field>
+              </div>
+              <!-- column -->
+              <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                <mat-form-field>
+                  <input matInput formControlName="link" placeholder="LINK">
+                </mat-form-field>
+              </div>             
+              <!-- column -->
+              <div fxFlex.gt-sm="100" fxFlex="100">
+                <button mat-raised-button *ngIf="!editMode" type="button" (click)="crear()"
+                  color="primary">ACEPTAR</button>
+                <button mat-raised-button *ngIf="editMode" type="button" (click)="editar()"
+                  color="primary">ACEPTAR</button>
+              </div>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
