@@ -4,6 +4,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { GrupoService } from '../services/grupo.service';
 import { GrupoResourceList } from '../models/grupo-resource-list';
 import { Router } from '@angular/router';
+import { Grupo } from '../models/grupo';
 
 @Component({
   selector: 'app-grupo-lista',
@@ -46,4 +47,16 @@ export class GrupoListaComponent implements OnInit {
     this.router.navigate([`/grupos/editar-form/${id}`]);
   }
 
+  eliminar(id: number): void {
+    this.grupoService.eliminar(id)
+      .subscribe(
+        (response) => {
+          const newDataSource = this.dataSource.data.filter((e) => e.id != id);
+          this.dataSource = new MatTableDataSource<GrupoResourceList>(newDataSource);
+        },
+        (error) => {
+          console.log('ERROR AL ELIMINAR EL GRUPO: ', error);
+        },
+      );
+  }
 }

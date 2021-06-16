@@ -28,4 +28,8 @@ export class GrupoService {
   editar(id: number, data: object): Observable<Response<Grupo>> {
     return this.http.put<Response<Grupo>>(`${apiUrl}/${id}`, data);
   }
+
+  eliminar(id: number): Observable<Response<Grupo>> {
+    return this.http.delete<Response<Grupo>>(`${apiUrl}/${id}`);
+  }
 }
