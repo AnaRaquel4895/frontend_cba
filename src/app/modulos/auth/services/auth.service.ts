@@ -20,4 +20,8 @@ export class AuthService {
     return this.http.post(`${apiUrl}/register`, data);
   }
 
+  getPermissions(): Observable<any> {
+    return this.http.get(`${apiUrl}/me/permissions`);
+  }
+
 }

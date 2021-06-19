@@ -19,6 +19,7 @@ export interface ChildrenItems {
     name: string;
     type?: string;
     child?: SubChildren[];
+    permissions?: string[];
 }
 
 export interface Menu {
@@ -29,6 +30,7 @@ export interface Menu {
     badge?: BadgeItem[];
     saperator?: Saperator[];
     children?: ChildrenItems[];
+    permissions?: string[];
 }
 
 const MENUITEMS = [
@@ -78,8 +80,17 @@ const MENUITEMS = [
         icon: 'bubble_chart',
         badge: [],
         children: [
-            { state: 'crear-form', name: 'Registrar Usuarios', type: 'link' },
-            { state: 'lista', name: 'Lista de Usuarios', type: 'link' },
+            {
+                state: 'crear-form',
+                name: 'Registrar Usuarios',
+                type: 'link'
+            },
+            {
+                state: 'lista',
+                name: 'Lista de Usuarios',
+                type: 'link',
+                permissions: ['USUARIOS.LISTAR']
+            },
         ]
     },
     {

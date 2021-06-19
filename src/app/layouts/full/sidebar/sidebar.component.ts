@@ -28,6 +28,15 @@ export class AppSidebarComponent implements OnDestroy {
     itemSelect: number[] = []
     parentIndex: Number;
     childIndex: Number;
+    permissions: string[] = ['USUARIOS.REGISTRAR', 'USUARIOS.LISTAR', 'GRUPOS.CREAR'];
+
+    hasPermission(permission: string): boolean {
+        if (permission) {
+            return this.permissions.includes(permission);
+        } else {
+            return false;
+        }
+    }
 
     setClickedRow(i, j) {
         this.parentIndex = i;
