@@ -39,9 +39,6 @@ export class LoginComponent implements OnInit {
         (err) => {
           console.log('Error: ', err);
           this.msg = 'Los credenciales ingresados no coinciden con ninguna cuenta';
-
-        },
-        () => {
           this.isLoadingLogin = false;
         }
       );
