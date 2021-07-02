@@ -19,6 +19,7 @@ export interface ChildrenItems {
     name: string;
     type?: string;
     child?: SubChildren[];
+    permissions?: string[];
 }
 
 export interface Menu {
@@ -29,20 +30,23 @@ export interface Menu {
     badge?: BadgeItem[];
     saperator?: Saperator[];
     children?: ChildrenItems[];
+    permissions?: string[];
 }
 
-const MENUITEMS = [
+const MENUITEMS: Menu[] = [
     {
         state: 'starter',
         name: 'Inicio',
         type: 'link',
-        icon: 'content_copy'
+        icon: 'content_copy',
+        permissions:['can_view_home']
     },
     {
         state: 'calendario',
         name: 'Calendario',
         type: 'link',
-        icon: 'calendar_today'
+        icon: 'calendar_today',
+        permissions:['can_read_events_calendario']
     },
     /*
     {
@@ -77,9 +81,10 @@ const MENUITEMS = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
+        permissions:['can_list_usuarios','can_create_usurios'],
         children: [
-            { state: 'crear-form', name: 'Registrar Usuarios', type: 'link' },
-            { state: 'lista', name: 'Lista de Usuarios', type: 'link' },
+            { state: 'crear-form', name: 'Registrar Usuarios', type: 'link', permissions:['can_create_usurios'] },
+            { state: 'lista', name: 'Lista de Usuarios', type: 'link', permissions:['can_list_usuarios'] },
         ]
     },
     {
@@ -88,9 +93,10 @@ const MENUITEMS = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
+        permissions:[],
         children: [
-            { state: 'crear-form', name: 'Crear Grupo', type: 'link' },
-            { state: 'lista', name: 'Lista Grupos', type: 'link' },
+            { state: 'crear-form', name: 'Crear Grupo', type: 'link', permissions:[] },
+            { state: 'lista', name: 'Lista Grupos', type: 'link', permissions:[] },
         ]
     },
     {
@@ -99,8 +105,9 @@ const MENUITEMS = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
+        permissions:[],
         children: [
-            { state: 'inicio', name: 'Calificaciones', type: 'link' },
+            { state: 'inicio', name: 'Calificaciones', type: 'link', permissions:[] },
         ]
     },
     {
@@ -115,9 +122,10 @@ const MENUITEMS = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
+        permissions:[],
         children: [
-            { state: 'lista', name: 'Lista de Programas', type: 'link' },
-            { state: 'crear-form', name: 'Nuevo Programa', type: 'link' }
+            { state: 'lista', name: 'Lista de Programas', type: 'link', permissions:[] },
+            { state: 'crear-form', name: 'Nuevo Programa', type: 'link', permissions:[] }
         ]
     },
     {
@@ -126,9 +134,10 @@ const MENUITEMS = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
+        permissions:[],
         children: [
-            { state: 'lista', name: 'Lista de Cursos', type: 'link' },
-            { state: 'crear-form', name: 'Nuevo Curso', type: 'link' }
+            { state: 'lista', name: 'Lista de Cursos', type: 'link', permissions:[] },
+            { state: 'crear-form', name: 'Nuevo Curso', type: 'link', permissions:[] }
         ]
     },
     {
@@ -137,9 +146,10 @@ const MENUITEMS = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
+        permissions:[],
         children: [
-            { state: 'lista', name: 'Lista de Niveles', type: 'link' },
-            { state: 'crear-form', name: 'Nuevo Nivel', type: 'link' }
+            { state: 'lista', name: 'Lista de Niveles', type: 'link', permissions:[] },
+            { state: 'crear-form', name: 'Nuevo Nivel', type: 'link', permissions:[] }
         ]
     },
     {
@@ -148,9 +158,10 @@ const MENUITEMS = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
+        permissions:[],
         children: [
-            { state: 'lista', name: 'Lista de Horarios', type: 'link' },
-            { state: 'crear-form', name: 'Nuevo Horario', type: 'link' }
+            { state: 'lista', name: 'Lista de Horarios', type: 'link', permissions:[] },
+            { state: 'crear-form', name: 'Nuevo Horario', type: 'link', permissions:[] }
         ]
     },
     {
@@ -159,9 +170,10 @@ const MENUITEMS = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
+        permissions:[],
         children: [
-            { state: 'lista', name: 'Lista de Gestiones', type: 'link' },
-            { state: 'crear-form', name: 'Nueva Gestion', type: 'link' }
+            { state: 'lista', name: 'Lista de Gestiones', type: 'link', permissions:[] },
+            { state: 'crear-form', name: 'Nueva Gestion', type: 'link', permissions:[] }
         ]
     },
     {
@@ -170,9 +182,10 @@ const MENUITEMS = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
+        permissions:[],
         children: [
-            { state: 'lista', name: 'Lista de Eventos', type: 'link' },
-            { state: 'crear-form', name: 'Nueva Evento', type: 'link' }
+            { state: 'lista', name: 'Lista de Eventos', type: 'link', permissions:[] },
+            { state: 'crear-form', name: 'Nueva Evento', type: 'link', permissions:[] }
         ]
     },
     {
@@ -181,9 +194,10 @@ const MENUITEMS = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
+        permissions:[],
         children: [
-            { state: 'lista', name: 'Lista de Noticias', type: 'link' },
-            { state: 'crear-form', name: 'Crear Noticia', type: 'link' }
+            { state: 'lista', name: 'Lista de Noticias', type: 'link', permissions:[] },
+            { state: 'crear-form', name: 'Crear Noticia', type: 'link', permissions:[] }
         ]
     },
     /**

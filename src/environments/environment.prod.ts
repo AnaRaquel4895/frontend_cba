@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: 'http://localhost:8000/api',
+  apiUrl: 'https://warm-earth-08761.herokuapp.com/api',
   production: true
 };

@@ -6,18 +6,22 @@ import {
   AccordionLinkDirective,
   AccordionDirective
 } from './accordion';
+import { HasPermissionDirective } from './has-permission.directive';
+import { MyserviceService } from '../myservice.service';
 
 @NgModule({
   declarations: [
     AccordionAnchorDirective,
     AccordionLinkDirective,
-    AccordionDirective
+    AccordionDirective,
+    HasPermissionDirective
   ],
   exports: [
     AccordionAnchorDirective,
     AccordionLinkDirective,
-    AccordionDirective
+    AccordionDirective,
+    HasPermissionDirective
   ],
-  providers: [MenuItems]
+  providers: [MenuItems, MyserviceService]
 })
 export class SharedModule {}
