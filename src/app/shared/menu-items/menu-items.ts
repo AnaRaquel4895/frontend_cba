@@ -81,9 +81,9 @@ const MENUITEMS: Menu[] = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
-        permissions:['can_list_usuarios','can_create_usurios'],
+        permissions:['can_list_usuarios','can_create_usuarios'],
         children: [
-            { state: 'crear-form', name: 'Registrar Usuarios', type: 'link', permissions:['can_create_usurios'] },
+            { state: 'crear-form', name: 'Registrar Usuarios', type: 'link', permissions:['can_create_usuarios'] },
             { state: 'lista', name: 'Lista de Usuarios', type: 'link', permissions:['can_list_usuarios'] },
         ]
     },
@@ -93,10 +93,10 @@ const MENUITEMS: Menu[] = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
-        permissions:[],
+        permissions:['can_create_grupos', 'can_list_grupos'],
         children: [
-            { state: 'crear-form', name: 'Crear Grupo', type: 'link', permissions:[] },
-            { state: 'lista', name: 'Lista Grupos', type: 'link', permissions:[] },
+            { state: 'crear-form', name: 'Crear Grupo', type: 'link', permissions:['can_create_grupos'] },
+            { state: 'lista', name: 'Lista Grupos', type: 'link', permissions:['can_list_grupos'] },
         ]
     },
     {
@@ -105,9 +105,9 @@ const MENUITEMS: Menu[] = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
-        permissions:[],
+        permissions:['can_read_calificaciones'],
         children: [
-            { state: 'inicio', name: 'Calificaciones', type: 'link', permissions:[] },
+            { state: 'inicio', name: 'Calificaciones', type: 'link', permissions:['can_read_calificaciones'] },
         ]
     },
     {
@@ -122,10 +122,10 @@ const MENUITEMS: Menu[] = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
-        permissions:[],
+        permissions:['can_create_programas','can_list_programas'],
         children: [
-            { state: 'lista', name: 'Lista de Programas', type: 'link', permissions:[] },
-            { state: 'crear-form', name: 'Nuevo Programa', type: 'link', permissions:[] }
+            { state: 'lista', name: 'Lista de Programas', type: 'link', permissions:['can_list_programas'] },
+            { state: 'crear-form', name: 'Nuevo Programa', type: 'link', permissions:['can_create_programas'] }
         ]
     },
     {
@@ -134,10 +134,10 @@ const MENUITEMS: Menu[] = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
-        permissions:[],
+        permissions:['can_create_cursos','can_list_cursos'],
         children: [
-            { state: 'lista', name: 'Lista de Cursos', type: 'link', permissions:[] },
-            { state: 'crear-form', name: 'Nuevo Curso', type: 'link', permissions:[] }
+            { state: 'lista', name: 'Lista de Cursos', type: 'link', permissions:['can_list_cursos'] },
+            { state: 'crear-form', name: 'Nuevo Curso', type: 'link', permissions:['can_create_cursos'] }
         ]
     },
     {
@@ -146,10 +146,10 @@ const MENUITEMS: Menu[] = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
-        permissions:[],
+        permissions:['can_create_niveles','can_list_niveles'],
         children: [
-            { state: 'lista', name: 'Lista de Niveles', type: 'link', permissions:[] },
-            { state: 'crear-form', name: 'Nuevo Nivel', type: 'link', permissions:[] }
+            { state: 'lista', name: 'Lista de Niveles', type: 'link', permissions:['can_list_niveles'] },
+            { state: 'crear-form', name: 'Nuevo Nivel', type: 'link', permissions:['can_create_niveles'] }
         ]
     },
     {
@@ -158,10 +158,10 @@ const MENUITEMS: Menu[] = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
-        permissions:[],
+        permissions:['can_create_horarios','can_list_horarios'],
         children: [
-            { state: 'lista', name: 'Lista de Horarios', type: 'link', permissions:[] },
-            { state: 'crear-form', name: 'Nuevo Horario', type: 'link', permissions:[] }
+            { state: 'lista', name: 'Lista de Horarios', type: 'link', permissions:['can_list_horarios'] },
+            { state: 'crear-form', name: 'Nuevo Horario', type: 'link', permissions:['can_create_horarios'] }
         ]
     },
     {
@@ -170,10 +170,10 @@ const MENUITEMS: Menu[] = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
-        permissions:[],
+        permissions:['can_create_gestiones','can_list_gestiones'],
         children: [
-            { state: 'lista', name: 'Lista de Gestiones', type: 'link', permissions:[] },
-            { state: 'crear-form', name: 'Nueva Gestion', type: 'link', permissions:[] }
+            { state: 'lista', name: 'Lista de Gestiones', type: 'link', permissions:['can_list_gestiones'] },
+            { state: 'crear-form', name: 'Nueva Gestion', type: 'link', permissions:['can_create_gestiones'] }
         ]
     },
     {
@@ -182,10 +182,10 @@ const MENUITEMS: Menu[] = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
-        permissions:[],
+        permissions:['can_create_eventos','can_list_eventos'],
         children: [
-            { state: 'lista', name: 'Lista de Eventos', type: 'link', permissions:[] },
-            { state: 'crear-form', name: 'Nueva Evento', type: 'link', permissions:[] }
+            { state: 'lista', name: 'Lista de Eventos', type: 'link', permissions:['can_list_eventos'] },
+            { state: 'crear-form', name: 'Nueva Evento', type: 'link', permissions:['can_create_eventos'] }
         ]
     },
     {
@@ -194,10 +194,10 @@ const MENUITEMS: Menu[] = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
-        permissions:[],
+        permissions:['can_create_noticias','can_list_noticias'],
         children: [
-            { state: 'lista', name: 'Lista de Noticias', type: 'link', permissions:[] },
-            { state: 'crear-form', name: 'Crear Noticia', type: 'link', permissions:[] }
+            { state: 'lista', name: 'Lista de Noticias', type: 'link', permissions:['can_list_noticias'] },
+            { state: 'crear-form', name: 'Crear Noticia', type: 'link', permissions:['can_create_noticias'] }
         ]
     },
     /**
