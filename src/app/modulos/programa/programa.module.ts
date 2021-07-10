@@ -8,6 +8,7 @@ import { ProgramaListaComponent } from './programa-lista/programa-lista.componen
 import { MaterialModule } from '../../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         }
       }
     ]),
+    SharedModule
   ]
 })
 export class ProgramaModule { }
