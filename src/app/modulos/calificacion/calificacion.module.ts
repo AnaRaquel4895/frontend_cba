@@ -8,6 +8,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CalificacionListaComponent } from './calificacion-lista/calificacion-lista.component';
 import { CalificacionEditarComponent } from './calificacion-editar/calificacion-editar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   entryComponents: [
-    CalificacionEditarComponent
+    CalificacionEditarComponent,
+    SharedModule
   ]
 })
 export class CalificacionModule { }

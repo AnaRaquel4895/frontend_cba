@@ -20,10 +20,10 @@
               <mat-header-cell *matHeaderCellDef> Opciones </mat-header-cell>
               <mat-cell *matCellDef="let element">
                 <span class="header-label">Opciones:</span>
-                <button mat-icon-button (click)="editar(element.id)" color="primary">
+                <button *hasPermission="['can_edit_niveles']"mat-icon-button (click)="editar(element.id)" color="primary">
                   <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
                 </button>
-                <button mat-icon-button (click)="eliminar()" color="primary">
+                <button *hasPermission="['can_delete_niveles']"mat-icon-button (click)="eliminar()" color="primary">
                   <mat-icon aria-label="Example icon-button with a heart icon">delete_forever</mat-icon>
                 </button>
               </mat-cell>

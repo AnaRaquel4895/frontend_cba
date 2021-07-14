@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CursoCrearFormComponent } from './curso-crear-form/curso-crear-form.component';
 import { CursoListaComponent } from './curso-lista/curso-lista.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { CursoListaComponent } from './curso-lista/curso-lista.component';
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class CursoModule { }

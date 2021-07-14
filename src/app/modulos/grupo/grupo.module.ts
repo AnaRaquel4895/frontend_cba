@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GrupoListaComponent } from './grupo-lista/grupo-lista.component';
 import { GrupoListaInscritosComponent } from './grupo-lista-inscritos/grupo-lista-inscritos.component';
 import { GrupoSelectInscripcionComponent } from './grupo-select-inscripcion/grupo-select-inscripcion.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import { GrupoSelectInscripcionComponent } from './grupo-select-inscripcion/grup
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class GrupoModule { }

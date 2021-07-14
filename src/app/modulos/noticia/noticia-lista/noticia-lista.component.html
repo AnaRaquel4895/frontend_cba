@@ -24,8 +24,8 @@
                 </p>
                 <a *ngIf="noticia.link" [href]="noticia.link" target="_blank">Link</a>
                 <mat-card-actions>
-                    <button mat-raised-button (click)="editar(noticia.id)" color="accent">Editar</button>
-                    <button mat-button (click)="eliminar(noticia.id)">Eliminar</button>
+                    <button *hasPermission="['can_edit_noticias']" mat-raised-button (click)="editar(noticia.id)" color="accent">Editar</button>
+                    <button *hasPermission="['can_delete_noticias']"mat-button (click)="eliminar(noticia.id)">Eliminar</button>
                 </mat-card-actions>
             </mat-card-content>
         </mat-card>

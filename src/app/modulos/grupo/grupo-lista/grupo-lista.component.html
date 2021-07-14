@@ -79,10 +79,10 @@
                   [routerLink]="['/grupos/lista-inscritos',element.id]">
                   <mat-icon aria-label="Example icon-button with a heart icon">list</mat-icon>
                 </button>
-                <button mat-icon-button matTooltip="Editar Grupo" color="primary" (click)="editar(element.id)">
+                <button *hasPermission="['can_edit_grupos']" mat-icon-button matTooltip="Editar Grupo" color="primary" (click)="editar(element.id)">
                   <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
                 </button>
-                <button mat-icon-button (click)="eliminar(element.id)" color="primary">
+                <button *hasPermission="['can_delete_grupos']"mat-icon-button (click)="eliminar(element.id)" color="primary">
                   <mat-icon aria-label="Example icon-button with a heart icon">delete_forever</mat-icon>
                 </button>
               </mat-cell>

@@ -9,6 +9,7 @@ import { MaterialModule } from '../../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsuarioListaComponent } from './usuario-lista/usuario-lista.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -54,8 +55,10 @@ import { UsuarioListaComponent } from './usuario-lista/usuario-lista.component';
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
+  
 })
 export class UsuarioModule { }
 /*

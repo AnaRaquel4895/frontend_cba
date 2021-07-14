@@ -13,6 +13,7 @@ import localeEs from '@angular/common/locales/es';
 import { EventoCrearFormComponent } from './evento-crear-form/evento-crear-form.component';
 import { EventoListaComponent } from './evento-lista/evento-lista.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../../shared/shared.module';
 
 registerLocaleData(localeEs);
 
@@ -79,6 +80,7 @@ registerLocaleData(localeEs);
         }
       }
     ]),
+    SharedModule
   ]
 })
 export class CalendarioModule { }

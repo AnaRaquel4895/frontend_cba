@@ -8,6 +8,7 @@ import { NivelCrearFormComponent } from './nivel-crear-form/nivel-crear-form.com
 import { MaterialModule } from '../../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         }
       }
     ]),
+    SharedModule
   ]
 })
 export class NivelModule { }
