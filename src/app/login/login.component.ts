@@ -9,6 +9,9 @@ import {
   FormControl
 } from '@angular/forms';
 import { AuthService } from '../modulos/auth/services/auth.service';
+import { Utilities } from '../Utilities';
+import { combineLatest } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -19,22 +22,35 @@ import { AuthService } from '../modulos/auth/services/auth.service';
 export class LoginComponent implements OnInit {
   msg = '';
   isLoadingLogin = false;
+  personalInfAndPermission$ = undefined;
   constructor(
     private service: MyserviceService,
     private routes: Router,
     private authService: AuthService
-  ) { }
-
+  ) {
+    this.personalInfAndPermission$ = combineLatest([this.authService.getPersonalInformation(),this.authService.getPermission()]);
+   }
+  
   check(uname: string, p: string) {
     this.isLoadingLogin = true;
-    this.authService.login({
+    const credentials = {
       email: uname,
       password: p
-    })
-      .subscribe(
-        (val) => {
-          console.log('Data: ', val);
+    };
+    this.authService.login(credentials)
+      .pipe(
+        switchMap((loginResponse) => {
+          console.log('Login success ');
+          localStorage.setItem('token', loginResponse.data.token);
           this.routes.navigate(['/starter']);
+          return this.personalInfAndPermission$;
+        })
+      ).subscribe(
+        ([personalInf, permissions]) => {
+          Utilities.personalInf = personalInf.data;
+          this.authService.permissionsSubject.next(permissions.data.map(permiso => {
+            return permiso.name;
+          }));
         },
         (err) => {
           console.log('Error: ', err);

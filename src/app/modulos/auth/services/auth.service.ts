@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 const apiUrl = environment.apiUrl + '/auth';
@@ -9,6 +9,8 @@ const apiUrl = environment.apiUrl + '/auth';
   providedIn: 'root'
 })
 export class AuthService {
+
+  public permissionsSubject = new BehaviorSubject<string[]>([]);
 
   constructor(private http: HttpClient) { }
 
@@ -20,4 +22,11 @@ export class AuthService {
     return this.http.post(`${apiUrl}/register`, data);
   }
 
+  getPersonalInformation(): Observable<any> {
+    return this.http.get(`${apiUrl}/me`,);
+  }
+
+  getPermission():Observable<any> {
+    return this.http.get(`${apiUrl}/me/permissions`,);
+  }
 }

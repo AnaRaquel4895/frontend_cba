@@ -1,5 +1,7 @@
 import { Directive, ElementRef, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import { AuthService } from '../modulos/auth/services/auth.service';
 import { MyserviceService } from '../myservice.service';
+import { Utilities } from '../Utilities';
 
 @Directive({
   selector: '[hasPermission]'
@@ -14,18 +16,20 @@ export class HasPermissionDirective {
     private element: ElementRef,
     private templateRef: TemplateRef<any>,
     private viewContainer: ViewContainerRef,
-    private userService: MyserviceService
+    private userService: MyserviceService,
+    private authService: AuthService
   ) {
 
   }
 
   ngOnInit() {
-    this.userService.currentUser.subscribe(user => {
-      this.currentUser = user;
-      console.log('permisoss del usuario: ', user);
-      
-      this.updateView();
-    });
+    this.authService.permissionsSubject
+      .subscribe(permissionsArray => {        
+        this.currentUser = {
+          permissions: permissionsArray
+        };
+        this.updateView();
+      });
   }
 
   @Input()

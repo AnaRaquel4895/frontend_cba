@@ -14,12 +14,16 @@ import { MediaMatcher } from '@angular/cdk/layout';
 
 import { MenuItems } from '../../../shared/menu-items/menu-items';
 import { Router } from '@angular/router';
+import { Utilities } from '../../../Utilities';
 @Component({
     selector: 'app-sidebar',
     templateUrl: './sidebar.component.html',
     styleUrls: []
 })
 export class AppSidebarComponent implements OnDestroy {
+
+    public utils = Utilities;
+
     public config: PerfectScrollbarConfigInterface = {};
     mobileQuery: MediaQueryList;
 
@@ -56,6 +60,7 @@ export class AppSidebarComponent implements OnDestroy {
     }
 
     logout(): void {
+        localStorage.removeItem('token');
         this.routes.navigate(['/login']);
     }
 
