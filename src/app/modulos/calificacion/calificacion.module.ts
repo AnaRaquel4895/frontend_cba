@@ -42,11 +42,11 @@ import { SharedModule } from '../../shared/shared.module';
     ]),
     MaterialModule,
     FlexLayoutModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   entryComponents: [
-    CalificacionEditarComponent,
-    SharedModule
+    CalificacionEditarComponent
   ]
 })
 export class CalificacionModule { }

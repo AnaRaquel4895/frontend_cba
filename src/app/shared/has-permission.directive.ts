@@ -33,7 +33,7 @@ export class HasPermissionDirective {
   }
 
   @Input()
-  set hasPermission(val) {    
+  set hasPermission(val) {     
     this.permissions = val;
     this.updateView();
   }
