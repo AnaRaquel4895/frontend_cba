@@ -16,10 +16,20 @@ export class GrupoListaComponent implements OnInit {
   displayedColumns = ['numero', 'curso', 'horario', 'profesor', 'opciones'];
   dataSource = new MatTableDataSource<GrupoResourceList>([]);
 
+  listaGestiones = [];
+  listaPeriodos = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+  
+  gestionFiltro = undefined;
+  periodoFiltro = undefined;
+
+  gruposSinFiltro = [];
+
+  isFiltered = false;
+
   constructor(
     breakpointObserver: BreakpointObserver,
     public grupoService: GrupoService,
-    private router: Router
+    private router: Router,
   ) {
     breakpointObserver.observe(['(max-width: 600px)']).subscribe(result => {
       this.displayedColumns = result.matches ?
@@ -33,14 +43,29 @@ export class GrupoListaComponent implements OnInit {
       .subscribe(
         (response) => {
           this.dataSource = new MatTableDataSource<GrupoResourceList>(response.data);
-          console.log(response.data.map(e=>{
+          this.gruposSinFiltro = response.data;
+          this.listaGestiones = response.data.map(e => {
             return e.gestion_nombre;
-          }));  
-          console.log(response.data.map(e=>{
-            return e.periodo;
-          }));        
+          });
+          this.listaGestiones = [...new Set(this.listaGestiones)];
+          this.listaGestiones = this.listaGestiones.sort(function (a, b) { return a - b });    
         }
       );
+  }
+
+  filtrarGrupos(): void {  
+    const gruposFiltrados = this.gruposSinFiltro.filter(grupo => {
+      return grupo.gestion_nombre === this.gestionFiltro && grupo.periodo === this.periodoFiltro;
+    });
+    this.dataSource = new MatTableDataSource<GrupoResourceList>(gruposFiltrados);
+    this.isFiltered = true;
+  }
+
+  limpiarFiltros(): void {
+    this.gestionFiltro = undefined;
+    this.periodoFiltro = undefined;
+    this.dataSource = new MatTableDataSource<GrupoResourceList>(this.gruposSinFiltro);
+    this.isFiltered = false;
   }
 
   editar(id: number): void {
