@@ -45,7 +45,9 @@ export class EventoListaComponent implements OnInit {
   }
 
   eliminar(id: number): void {
-
+    this.cursoService.eliminar(id)
+      .subscribe((response) => {
+        this.listarProgramas();
+      });
   }
-
 }

@@ -102,5 +102,7 @@ export class EventoService {
       }));
   }
 
-
+  eliminar(id: number): Observable<Response<Evento>> {
+    return this.http.delete<Response<Evento>>(`${apiUrl}/${id}`);
+  }
 }
