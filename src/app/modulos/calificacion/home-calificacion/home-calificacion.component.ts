@@ -28,6 +28,9 @@ export class HomeCalificacionComponent implements OnInit {
   ngOnInit(): void {
     this.grupoService.listar()
       .subscribe((response) => {
+        console.error('lista de grupos>>>>');
+        console.log(response.data);
+        
         this.dataSource = new MatTableDataSource<GrupoResourceList>(response.data);
       });
   }

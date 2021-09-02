@@ -4,7 +4,6 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { GrupoService } from '../services/grupo.service';
 import { GrupoResourceList } from '../models/grupo-resource-list';
 import { Router } from '@angular/router';
-import { Grupo } from '../models/grupo';
 
 @Component({
   selector: 'app-grupo-lista',

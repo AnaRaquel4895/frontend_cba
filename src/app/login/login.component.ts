@@ -47,6 +47,9 @@ export class LoginComponent implements OnInit {
         })
       ).subscribe(
         ([personalInf, permissions]) => {
+          console.error('PERSONAL INFORMATION');
+          console.log(personalInf);
+                    
           Utilities.personalInf = personalInf.data;
           this.authService.permissionsSubject.next(permissions.data.map(permiso => {
             return permiso.name;

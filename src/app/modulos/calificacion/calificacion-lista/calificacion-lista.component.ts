@@ -63,6 +63,10 @@ export class CalificacionListaComponent implements OnInit {
       (response) => {
         this.dataSource = new MatTableDataSource<InscripcionGrupo>(response.data);
         this.inscripcionGrupoList = response.data;
+        console.error('>>>>>>>>>>>>>');
+        
+        console.log('INscripciones grupo: ', response.data);
+        
       }
     );
   }
