@@ -39,7 +39,7 @@
               <mat-header-cell *matHeaderCellDef> MidTerm </mat-header-cell>
               <mat-cell *matCellDef="let element">
                 <span class="header-label">MidTerm:</span>
-                {{ (getCalificacion(element).quiz1+getCalificacion(element).quiz2)/2 }}
+                {{ (getCalificacion(element).quiz1+getCalificacion(element).quiz2)/2 | number: '1.0-0' }}
               </mat-cell>
             </ng-container>
 
@@ -75,7 +75,7 @@
               <mat-header-cell *matHeaderCellDef> Nota </mat-header-cell>
               <mat-cell *matCellDef="let element">
                 <span class="header-label">Nota:</span>
-                {{ (getCalificacion(element).quiz1+getCalificacion(element).quiz2+getCalificacion(element).quiz3+getCalificacion(element).quiz4)/4 }}
+                {{ (getCalificacion(element).quiz1+getCalificacion(element).quiz2+getCalificacion(element).quiz3+getCalificacion(element).quiz4)/4 | number: '1.0-0' }}
               </mat-cell>
             </ng-container>
 
