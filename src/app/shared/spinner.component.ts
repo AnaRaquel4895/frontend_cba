@@ -13,10 +13,12 @@ import {
   NavigationError
 } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
+import { delay } from 'rxjs/operators';
+import { Utilities } from '../Utilities';
 
 @Component({
   selector: 'app-spinner',
-  template: `<div class="preloader" *ngIf="isSpinnerVisible">
+  template: `<div class="preloader" *ngIf="isSpinnerVisible && utils.personalInf">
         <div class="spinner">
           <div class="double-bounce1"></div>
           <div class="double-bounce2"></div>
@@ -25,6 +27,8 @@ import { DOCUMENT } from '@angular/common';
   encapsulation: ViewEncapsulation.None
 })
 export class SpinnerComponent implements OnDestroy {
+
+  public utils = Utilities;
   public isSpinnerVisible = true;
 
   @Input() public backgroundColor = 'rgba(0, 115, 170, 0.69)';
@@ -33,7 +37,8 @@ export class SpinnerComponent implements OnDestroy {
     private router: Router,
     @Inject(DOCUMENT) private document: Document
   ) {
-    this.router.events.subscribe(
+    this.router.events
+    .pipe(delay(0)).subscribe(
       event => {
         if (event instanceof NavigationStart) {
           this.isSpinnerVisible = true;

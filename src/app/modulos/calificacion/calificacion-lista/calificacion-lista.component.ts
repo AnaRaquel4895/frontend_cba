@@ -60,13 +60,9 @@ export class CalificacionListaComponent implements OnInit {
         return this.inscripcionService.listarIncripcionesByGrupo(idGrupo);
       })
     ).subscribe(
-      (response) => {
+      (response) => {       
         this.dataSource = new MatTableDataSource<InscripcionGrupo>(response.data);
-        this.inscripcionGrupoList = response.data;
-        console.error('>>>>>>>>>>>>>');
-        
-        console.log('INscripciones grupo: ', response.data);
-        
+        this.inscripcionGrupoList = response.data;        
       }
     );
   }

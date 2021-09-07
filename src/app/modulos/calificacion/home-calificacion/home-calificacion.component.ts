@@ -4,6 +4,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
 import { GrupoService } from '../../grupo/services/grupo.service';
 import { GrupoResourceList } from '../../grupo/models/grupo-resource-list';
+import { Utilities } from '../../../Utilities';
 
 @Component({
   selector: 'app-home-calificacion',
@@ -28,10 +29,17 @@ export class HomeCalificacionComponent implements OnInit {
   ngOnInit(): void {
     this.grupoService.listar()
       .subscribe((response) => {
-        console.error('lista de grupos>>>>');
-        console.log(response.data);
-        
-        this.dataSource = new MatTableDataSource<GrupoResourceList>(response.data);
+
+        if(Utilities.personalInf.perfil && Utilities.personalInf.perfil.role_id === "3")
+        {
+          this.dataSource = new MatTableDataSource<GrupoResourceList>(
+            response.data.filter(grupo => grupo.perfil_usuario_id === Utilities.personalInf.perfil.id )
+            );
+        }
+        else
+        {
+          this.dataSource = new MatTableDataSource<GrupoResourceList>(response.data);
+        }
       });
   }
 

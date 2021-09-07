@@ -108,6 +108,7 @@ const MENUITEMS: Menu[] = [
         permissions:['can_read_calificaciones'],
         children: [
             { state: 'inicio', name: 'Calificaciones', type: 'link', permissions:['can_read_calificaciones'] },
+            { state: 'kardex', name: 'Kardex', type: 'link', permissions:['can_read_calificaciones'] },
         ]
     },
     {

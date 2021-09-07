@@ -9,10 +9,11 @@ import { CalificacionListaComponent } from './calificacion-lista/calificacion-li
 import { CalificacionEditarComponent } from './calificacion-editar/calificacion-editar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
+import { CalificacionKardexComponent } from './calificacion-kardex/calificacion-kardex.component';
 
 
 @NgModule({
-  declarations: [HomeCalificacionComponent, CalificacionListaComponent, CalificacionEditarComponent],
+  declarations: [HomeCalificacionComponent, CalificacionListaComponent, CalificacionEditarComponent, CalificacionKardexComponent],
   imports: [
     CommonModule,
     // CalificacionRoutingModule,
@@ -36,6 +37,17 @@ import { SharedModule } from '../../shared/shared.module';
           urls: [
             { title: 'Dashboard', url: '/dashboard' },
             { title: 'Calificaciones' }
+          ]
+        }
+      },
+      {
+        path: 'kardex',
+        component: CalificacionKardexComponent,
+        data: {
+          title: 'Kardex',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Kardex' }
           ]
         }
       }

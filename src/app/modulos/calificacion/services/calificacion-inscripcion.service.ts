@@ -18,4 +18,7 @@ export class CalificacionInscripcionService {
     return this.http.put<Response<CalificacionInscripcion>>(`${apiUrl}/${id}`, data);
   }
 
+  getKardex(perfilId: number): Observable<Response<any[]>> {
+    return this.http.get<Response<any[]>>(`${apiUrl}/`);
+  }
 }
