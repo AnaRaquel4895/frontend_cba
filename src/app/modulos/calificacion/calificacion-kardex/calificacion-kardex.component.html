@@ -1,8 +1,8 @@
 <div fxLayout="row wrap">
     <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
       <mat-card>
-        <mat-card-content>
-          <mat-card-title></mat-card-title>
+        <mat-card-content id="kardex-data">
+          <mat-card-title *ngIf="utils.personalInf">{{ utils.personalInf.perfil.nombres }} {{ utils.personalInf.perfil.apellido_paterno }} {{ utils.personalInf.perfil.apellido_materno }}</mat-card-title>
           <div class="responsive-table">
             <mat-table #table [dataSource]="dataSource">
   
@@ -83,6 +83,8 @@
             </mat-table>
           </div>
         </mat-card-content>
+        <button mat-raised-button type="button" (click)="exportarKardex()"
+        color="primary">Exportar Kardex</button>
       </mat-card>
     </div>
   </div>
