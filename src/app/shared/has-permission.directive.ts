@@ -57,8 +57,10 @@ export class HasPermissionDirective {
   }
 
   private checkPermission() {
+    if (this.permissions && this.permissions.length === 0) {
+      return true;      
+    }
     let hasPermission = false;
-
     if (this.currentUser && this.currentUser.permissions) {
       for (const checkPermission of this.permissions) {
         const permissionFound = this.currentUser.permissions.find(x => x.toUpperCase() === checkPermission.toUpperCase());

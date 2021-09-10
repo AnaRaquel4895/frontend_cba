@@ -105,10 +105,10 @@ const MENUITEMS: Menu[] = [
         type: 'sub',
         icon: 'bubble_chart',
         badge: [],
-        permissions:['can_read_calificaciones'],
+        permissions:[],
         children: [
             { state: 'inicio', name: 'Calificaciones', type: 'link', permissions:['can_read_calificaciones'] },
-            { state: 'kardex', name: 'Kardex', type: 'link', permissions:['can_read_calificaciones'] },
+            { state: 'kardex', name: 'Kardex', type: 'link', permissions:['can_view_kardex'] },
         ]
     },
     {
