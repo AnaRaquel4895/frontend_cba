@@ -94,7 +94,10 @@
               <mat-cell *matCellDef="let element">
                 <span class="header-label">Opciones:</span>
                 <button *hasPermission="['can_edit_calificaciones']" mat-icon-button (click)="editarCalificacion(element)" color="primary">
-                  <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+                  <mat-icon aria-label="Example icon-button">edit</mat-icon>
+                </button>
+                <button mat-icon-button color="primary">
+                  <mat-icon aria-label="Example icon-button">launch</mat-icon>
                 </button>
               </mat-cell>
             </ng-container>
