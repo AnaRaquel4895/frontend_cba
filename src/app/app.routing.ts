@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { FullComponent } from './layouts/full/full.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
+import { CalendarViewComponent } from './calendar-view/calendar-view.component';
 
 export const AppRoutes: Routes = [
     {
@@ -72,5 +73,9 @@ export const AppRoutes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
+    },
+    {
+        path: 'calendar-view',
+        component: CalendarViewComponent,
     }
 ];

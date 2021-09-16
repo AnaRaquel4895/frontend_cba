@@ -24,6 +24,8 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { AuthInterceptorService } from './auth-interceptor.service';
+import { CalendarViewComponent } from './calendar-view/calendar-view.component';
+import { CalendarioModule } from './modulos/calendario/calendario.module';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true,
@@ -39,6 +41,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         SpinnerComponent,
         AppSidebarComponent,
         LoginComponent,
+        CalendarViewComponent,
         AppBreadcrumbComponent
     ],
     imports: [
@@ -50,7 +53,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         PerfectScrollbarModule,
         HttpClientModule,
         SharedModule,
-        RouterModule.forRoot(AppRoutes)
+        RouterModule.forRoot(AppRoutes),
+        CalendarioModule,
+        
     ],
     providers: [
         AuthGuard,

@@ -81,6 +81,7 @@ registerLocaleData(localeEs);
       }
     ]),
     SharedModule
-  ]
+  ],
+  exports:[CalendarioComponent]
 })
 export class CalendarioModule { }
