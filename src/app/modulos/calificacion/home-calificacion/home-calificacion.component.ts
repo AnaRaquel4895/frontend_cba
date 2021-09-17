@@ -30,7 +30,7 @@ export class HomeCalificacionComponent implements OnInit {
     this.grupoService.listar()
       .subscribe((response) => {
 
-        if(Utilities.personalInf.perfil && Utilities.personalInf.perfil.role_id === "3")
+        if(Utilities.personalInf && Utilities.personalInf.perfil && Utilities.personalInf.perfil.role_id === "3")
         {
           this.dataSource = new MatTableDataSource<GrupoResourceList>(
             response.data.filter(grupo => grupo.perfil_usuario_id === Utilities.personalInf.perfil.id )

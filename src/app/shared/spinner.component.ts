@@ -18,7 +18,7 @@ import { Utilities } from '../Utilities';
 
 @Component({
   selector: 'app-spinner',
-  template: `<div class="preloader" *ngIf="isSpinnerVisible && utils.personalInf">
+  template: `<div class="preloader" *ngIf="isSpinnerVisible">
         <div class="spinner">
           <div class="double-bounce1"></div>
           <div class="double-bounce2"></div>
