@@ -11,6 +11,7 @@ import { GrupoResourceList } from '../../grupo/models/grupo-resource-list';
 import { InscripcionGrupo } from '../../grupo/models/inscripcion-grupo';
 import { CalificacionInscripcion } from '../../grupo/models/calificacion-inscripcion';
 import { Perfil } from '../../perfil/models/perfil';
+import { KardexViewComponent } from '../../../kardex-view/kardex-view.component';
 
 @Component({
   selector: 'app-calificacion-lista',
@@ -104,5 +105,15 @@ export class CalificacionListaComponent implements OnInit {
 
   getCalificacion(data: InscripcionGrupo): CalificacionInscripcion {
     return data.calificacion_inscripcion;
+  }
+
+  verKardex(element: any): void {
+    const dialogRef = this.dialog.open(KardexViewComponent, {
+      width: '800px',
+      data: {
+        perfilId: element.perfil_usuario.id,
+        fullName: `${element.perfil_usuario.nombres} ${element.perfil_usuario.apellido_paterno} ${element.perfil_usuario.apellido_materno}`
+      }
+    });
   }
 }

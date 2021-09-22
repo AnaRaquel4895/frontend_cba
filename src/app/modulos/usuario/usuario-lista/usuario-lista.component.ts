@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Perfil } from '../../perfil/models/perfil';
 import { PerfilService } from '../../perfil/services/perfil.service';
 import { RoleEnum } from '../../auth/enums/role.enum';
+import { MatDialog } from '@angular/material/dialog';
+import { KardexViewComponent } from '../../../kardex-view/kardex-view.component';
 
 
 @Component({
@@ -27,6 +29,7 @@ export class UsuarioListaComponent implements OnInit {
     private router: Router,
     private perfilService: PerfilService,
     private activatedRoute: ActivatedRoute,
+    public dialog: MatDialog,
   ) {
     breakpointObserver.observe(['(max-width: 600px)']).subscribe(result => {
       this.displayedColumns = result.matches ?
@@ -69,6 +72,14 @@ export class UsuarioListaComponent implements OnInit {
   private listarPerfiles(): void {
     this.perfilService.listar(this.rolUsuario)
       .subscribe((resp) => {
+        // isEstudiante
+        if (this.rolUsuario == RoleEnum.ESTUDIANTES) {
+          resp.data = resp.data.map(element => {
+            element.isEstudiante = true;
+            return element;
+          });
+        }
+      
         this.dataSource = new MatTableDataSource<Perfil>(resp.data);
       });
   }
@@ -90,4 +101,13 @@ export class UsuarioListaComponent implements OnInit {
       );
   }
 
+  verKardex(element: any): void {
+    const dialogRef = this.dialog.open(KardexViewComponent, {
+      width: '800px',
+      data: {
+        perfilId: element.id,
+        fullName: `${element.nombres} ${element.apellido_paterno} ${element.apellido_materno}`
+      }
+    });
+  }
 }

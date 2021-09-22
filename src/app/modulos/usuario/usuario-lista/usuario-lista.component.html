@@ -59,7 +59,7 @@
                   <mat-icon aria-label="Example icon-button with a heart icon">delete_forever</mat-icon>
                 </button>
                 <button mat-icon-button color="primary">
-                  <mat-icon aria-label="Example icon-button with a heart icon">launch</mat-icon>
+                  <mat-icon aria-label="Example icon-button with a heart icon" (click)="verKardex(element)" *ngIf="element.isEstudiante">launch</mat-icon>
                 </button>
               </mat-cell>
             </ng-container>

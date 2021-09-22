@@ -57,6 +57,9 @@ import { SharedModule } from '../../shared/shared.module';
     FormsModule,
     ReactiveFormsModule,
     SharedModule
+  ],
+  entryComponents: [
+    UsuarioListaComponent
   ]
   
 })
